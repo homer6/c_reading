@@ -1,0 +1,29 @@
+# General
+EmissionRate <value>
+Size <min> <max>
+ParticleLifeTime <value>
+SystemLifeTime <value>
+ActivationTime <value>
+MaxParticles <count>
+Kill <killtype>
+	# killtype: NOTHING, OLDEST, RANDOM
+ObjectName <name>
+
+# Bitmaps
+Image <filename>
+ImageAnim <filename> <rows> <columns> <frames> <fps> <behaviour>
+	# endtype: LOOP, MIRROR, LIFE, RANDOM
+
+# Bitmap rotation
+Angle <mindeg> <maxdeg>
+AngleSpeed <mindeg/sec> <maxdeg/sec>
+
+# Particle paths
+Speed <min> <max>
+Paths <count>
+PathSource <name>
+	# uses mesh vertex positions to offset paths, and vertex count as path count
+Radius <start> <end>
+SizeScale <start> <end>
+RandomPathSelection
+

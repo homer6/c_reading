@@ -1,0 +1,38 @@
+Level Rendering
+---------------
+
+- All objects are rendering in one combined scene
+
+- GameObjects return renderable object from getRenderObject if they have any
+
+
+Algorithm
+---------
+
+gameCamera.render()
+  normalizedViewport = (-1,-1,1,1)
+  collectRenderObjectsFromCells( gameCamera, gameCamera->cell(), emptyScene, normalizedViewport )
+  gameCamera->sceneCamera->render();
+end
+
+collectRenderObjectsFromCells( gameCamera, cell, scene, viewport )
+  add cell->getRenderObject() to scene
+
+  for each object in cell
+    add object->getRenderObject() to scene
+ 
+  for each portal in cell
+    if portal in front of gameCamera front plane
+      projectedPortal = portal projection to normalized screen space
+      portalScreenRect = bounding rectangle of projectedPortal
+      newViewport = intersectRectangles2D( viewport, portalScreenRect )
+      if newViewport not empty
+        collectRenderObjectsFromCells( gameCamera, portal->targetCell(), scene, newViewport )
+end
+
+
+Known Issues
+------------
+
+- Doesn't handle correctly the case if object is visible but the cell is not
+  (explosion just around the corner etc.)

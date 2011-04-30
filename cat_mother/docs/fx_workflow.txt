@@ -1,0 +1,69 @@
+In 3dsmax
+---------
+
+1) Set tag to material name FX=<filename without .fx extension>,
+   for example 'My Material FX=bump'
+   to use bump.fx shader effect
+2) Export scene normally
+
+
+Viewing
+-------
+
+1) Copy used .fx files to the scene export output directory
+2) Open scene in sgviewer
+   (note: sgviewer must be started first)
+
+
+Effect Parameters
+-----------------
+
+- Only Standard Material texture channels are exported:
+  - tDiffuse
+  - tReflection
+  - tBump
+  - tLightMap
+  
+- Object world space direction/position can be used in effect 
+  file by referring to object name with 'd' or 'p' prefix,
+  e.g. dLight1 is direction of Light1 and
+  pLight2 is position of Light2
+
+- Special parameters: 
+  - mWorld = model->world transform
+  - mTotal = model->world->view->proj transform
+  - pCamera = camera position in world
+
+
+Vertex Formats
+--------------
+
+Vertex format of exported geometry needs to be
+known exactly when writing the vertex shader.
+This is limitation of DX8 shader and effect files.
+Following logic defines the exported vertex format:
+
+- Vertex position (3 floats) is exported always
+
+- Vertex normal (3 floats) is exported if 
+  geometry does not use vertex color
+
+- Diffuse color (4 bytes) is exported if
+  geometry uses vertex color
+
+- Texture coordinate layer 0 (2 floats) is exported 
+  if Diffuse texture is used
+
+- Texture coordinate layer 1 (2 floats) is exported
+  if Self Illumination texture (lightmap) is used
+  
+- Vertex tangent space U (3 floats) is exported
+  if material if Bump texture is used
+
+
+About Shader Debugging
+----------------------
+
+- See debug output for unresolved shader parameters
+
+- Use DirectX Debug DLLs for shader debug information

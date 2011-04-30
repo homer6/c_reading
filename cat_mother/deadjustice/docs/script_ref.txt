@@ -1,0 +1,1676 @@
+Script Function Quick Reference 2003/3/28
+-----------------------------------------
+
+NOTE: This file is only for quick 'memory refresh' of scriptable function 
+parameters; it does not explain any of the functions.
+
+The list contains scriptable (C++) functions of
+- Camera
+- Cell
+- Character
+- Dynamic Object
+- Level
+- Weapon
+- Path
+- Trigger
+
+-----------------------------------------------------------------------------
+
+
+Scriptable (C++) functions of Camera:
+
+  addLocalVelocity
+    Description: addLocalVelocity expects object space delta velocity (x,y,z)
+
+  addNonLinearTextureAnimation
+    Description: addNonLinearTextureAnimation expects new animation name, source animation name and frame table
+
+  addTargetStateOffset
+    Description: addTargetStateOffset expects character primary state name (or UNKNOWN), secondary state name (or UNKNOWN), move offset (x,y,z), look-at offset (x,y,z) and blend time
+
+  addTextureAnimation
+    Description: addTextureAnimation expects animation name, target material name, image file name format string, first image index, last image index (inclusive), playback frame rate and end behaviour type (REPEAT, CONSTANT, OSCILLATE)
+
+  addTimerEvent
+    Description: addTimerEvent expects function and time in seconds
+
+  addWorldVelocity
+    Description: addWorldVelocity expects world space delta velocity (x,y,z)
+
+  alignRotation
+    Description: alignRotation expects world space vector (x,y,z) representing up
+
+  boundSphere
+    Description: boundSphere returns object bounding sphere radius
+
+  cell
+    Description: cell returns the cell where the object is
+
+  disableDynamicShadow
+    Description: disableDynamicShadow disables dynamic shadow
+
+  enableDynamicShadow
+    Description: enableDynamicShadow enables dynamic shadow
+
+  fadeInSoundAt
+    Description: Functions fadeInSoundAt expects sound description name (without .sf suffix), fade time, (x,y,z) offset and optional parent object name
+
+  fadeOutSound
+    Description: Functions fadeOutSound expects sound description name (without .sf suffix), fade time, and optional parent object name
+
+  getAngleTo
+    Description: getAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getAnimationEndTime
+    Description: getAnimationEndTime expects camera animation name and scene file
+
+  getAnimationStartTime
+    Description: getAnimationStartTime expects camera animation name and scene file
+
+  getDistanceTo
+    Description: getDistanceTo expects game object or (x,y,z) position as 1.parameter
+
+  getForward
+    Description: Function getForward expects valid index in range [0,3) as 1.parameter
+
+  getGameObject
+    Description: getGameObject expects string
+
+  getLocalVelocity
+    Description: Function getLocalVelocity expects valid index in range [0,3) as 1.parameter
+
+  getPosition
+    Description: Function getPosition expects valid index in range [0,3) as 1.parameter
+
+  getRandomInteger
+    Description: Functions getRandomInteger returns integer in range [first,second]
+
+  getRight
+    Description: Function getRight expects valid index in range [0,3) as 1.parameter
+
+  getSignedAngleTo
+    Description: getSignedAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getSignedWorldAngleTo
+    Description: getSignedWorldAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getTextureAnimationTime
+    Description: getTextureAnimationTime expects texture animation name
+
+  getTimerEventCount
+    Description: Functions getTimerEventCount returns number of timer event that start with specified string
+
+  getUp
+    Description: Function getUp expects valid index in range [0,3) as 1.parameter
+
+  getVelocity
+    Description: Function getVelocity expects valid index in range [0,3) as 1.parameter
+
+  hidden
+    Description: hidden returns true if object is hidden.
+
+  hide
+    Description: hide hides object.
+
+  include
+    Description: include expects script name
+
+  isInFront
+    Description: isInFront returns true if object or position is in front
+
+  isOnRightSide
+    Description: isOnRightSide returns true if object or position is on right side
+
+  loadSound
+    Description: Functions loadSound expects sound description name (without .sf suffix)
+
+  lookAt
+    Description: lookAt expects game object or (x,y,z) position as 1.parameter
+
+  name
+    Description: name returns name of the object as set by setName(<string>)
+
+  playAnimation
+    Description: playAnimation expects camera animation name, scene file and optional start time
+
+  playDirectedParticleSystemAt
+    Description: Functions playDirectedParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset, (x,y,z) direction vector and optional parent object name
+
+  playParticleSystem
+    Description: Functions playParticleSystem expects particle system name (without .psf suffix) and optional parent object name
+
+  playParticleSystemAt
+    Description: Functions playParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset and optional parent object name
+
+  playSound
+    Description: Functions playSound expects sound description name (without .sf suffix) and optional parent object name
+
+  playSoundAt
+    Description: Functions playSoundAt expects sound description name (without .sf suffix), (x,y,z) offset and optional parent object name
+
+  playSoundOffset
+    Description: Functions playSoundOffset expects sound description name (without .sf suffix), start time and optional parent object name
+
+  playTextureAnimation
+    Description: playTextureAnimation expects texture animation name
+
+  projectPositionOnForward
+    Description: projectPositionOnForward returns length of (x,y,z) projected on forward vector
+
+  projectPositionOnRight
+    Description: projectPositionOnRight returns length of (x,y,z) projected on right vector
+
+  random
+    Description: random returns random in half-open range [0,1)
+
+  removeTimerEvents
+    Description: removeTimerEvents expects name start string of timer event functions to remove
+
+  rotateY
+    Description: rotateY expects angle
+
+  setAverageCount
+    Description: Function setAverageCount expects average count
+
+  setBack
+    Description: Function setBack expects back plane distance
+
+  setBlendTime
+    Description: Function setBlendTime expects time to blend to another camera position
+
+  setBoundSphere
+    Description: setBoundSphere expects meters
+
+  setCrosshairLimitDown
+    Description: setCrosshairLimitDown expects limit in projection space coordinates (0..1)
+
+  setCrosshairLimitLeft
+    Description: setCrosshairLimitLeft expects limit in projection space coordinates (0..1)
+
+  setCrosshairLimitRight
+    Description: setCrosshairLimitRight expects limit in projection space coordinates (0..1)
+
+  setCrosshairLimitUp
+    Description: setCrosshairLimitUp expects limit in projection space coordinates (0..1)
+
+  setCrosshairOffset
+    Description: setCrosshairOffset expects crosshair offset aiming rectangle center in projection space coordinates (-1..1)
+
+  setCutSceneWideScreenRatio
+    Description: setCutSceneWideScreenRatio expects width:height ratio used in cut scenes
+
+  setDynamicShadow
+    Description: setDynamicShadow expects shadow object name and shadow length
+
+  setFront
+    Description: Function setFront expects front plane distance
+
+  setHorizontalFov
+    Description: setHorizontalFov expects horizontal view angle in degrees
+
+  setLookDamping
+    Description: setLookDamping expects damping constants
+
+  setLookSpring
+    Description: setLookSpring expects spring constants
+
+  setLookTarget
+    Description: setLookTarget expects look target (x,y,z)
+
+  setMinPortalVisibleSize
+    Description: setMinPortalVisibleSize expects minimum visible portal size in normalized screen space
+
+  setMoveDamping
+    Description: setMoveDamping expects damping constants
+
+  setMoveSpring
+    Description: setMoveSpring expects spring constants
+
+  setMoveTarget
+    Description: setMoveTarget expects offset (x,y,z) from move target position
+
+  setName
+    Description: setName expects a name string
+
+  setPitchAmountDown
+    Description: setPitchAmountDown expects amount in degrees
+
+  setPitchAmountUp
+    Description: setPitchAmountUp expects pitch amount in degrees
+
+  setPitchThresholdDown
+    Description: setPitchThresholdDown expects percent of half screen height
+
+  setPitchThresholdUp
+    Description: setPitchThresholdUp expects percent of half screen height
+
+  setPosition
+    Description: setPosition expects cell object table & (x,y,z) position
+
+  setPostPitchMove
+    Description: setPostPitchMove expects post pitch offset
+
+  setRotationToIdentity
+    Description: setRotationToIdentity sets rotation matrix to identity
+
+  setSeed
+    Description: setSeed expects random seed
+
+  setTimeScale
+    Description: setTimeScale expects time scale
+
+  setTurnStrengthLeft
+    Description: setTurnStrengthLeft expects amount relative to character turning speed
+
+  setTurnStrengthRight
+    Description: setTurnStrengthRight expects amount relative to character turning speed
+
+  setTurnThresholdLeft
+    Description: setTurnThresholdLeft expects percent of half screen width
+
+  setTurnThresholdRight
+    Description: setTurnThresholdRight expects percent of half screen width
+
+  setVelocity
+    Description: setVelocity expects m/s
+
+  setWorldSpaceControl
+    Description: Function setWorldSpaceControl expects boolean
+
+  speed
+    Description: speed returns object speed in m/s
+
+  stopAnimation
+    Description: stopAnimation stops any active camera animation
+
+  stopSound
+    Description: Functions stopSound expects sound description name (without .sf suffix) and optional parent object name
+
+  stopTextureAnimation
+    Description: stopTextureAnimation expects texture animation name
+
+  unhide
+    Description: unhide unhides object.
+
+-----------------------------------------------------------------------------
+
+
+Scriptable (C++) functions of Cell:
+
+  addNonLinearTextureAnimation
+    Description: addNonLinearTextureAnimation expects new animation name, source animation name and frame table
+
+  addTextureAnimation
+    Description: addTextureAnimation expects animation name, target material name, image file name format string, first image index, last image index (inclusive), playback frame rate and end behaviour type (REPEAT, CONSTANT, OSCILLATE)
+
+  addTimerEvent
+    Description: addTimerEvent expects function and time in seconds
+
+  fadeInSoundAt
+    Description: Functions fadeInSoundAt expects sound description name (without .sf suffix), fade time, (x,y,z) offset and optional parent object name
+
+  fadeOutSound
+    Description: Functions fadeOutSound expects sound description name (without .sf suffix), fade time, and optional parent object name
+
+  getRandomInteger
+    Description: Functions getRandomInteger returns integer in range [first,second]
+
+  getTextureAnimationTime
+    Description: getTextureAnimationTime expects texture animation name
+
+  getTimerEventCount
+    Description: Functions getTimerEventCount returns number of timer event that start with specified string
+
+  include
+    Description: include expects script name
+
+  loadSound
+    Description: Functions loadSound expects sound description name (without .sf suffix)
+
+  name
+    Description: name returns name of the object as set by setName(<string>)
+
+  playDirectedParticleSystemAt
+    Description: Functions playDirectedParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset, (x,y,z) direction vector and optional parent object name
+
+  playParticleSystem
+    Description: Functions playParticleSystem expects particle system name (without .psf suffix) and optional parent object name
+
+  playParticleSystemAt
+    Description: Functions playParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset and optional parent object name
+
+  playSound
+    Description: Functions playSound expects sound description name (without .sf suffix) and optional parent object name
+
+  playSoundAt
+    Description: Functions playSoundAt expects sound description name (without .sf suffix), (x,y,z) offset and optional parent object name
+
+  playSoundOffset
+    Description: Functions playSoundOffset expects sound description name (without .sf suffix), start time and optional parent object name
+
+  playTextureAnimation
+    Description: playTextureAnimation expects texture animation name
+
+  random
+    Description: random returns random in half-open range [0,1)
+
+  removeTimerEvents
+    Description: removeTimerEvents expects name start string of timer event functions to remove
+
+  setName
+    Description: setName expects a name string
+
+  setSeed
+    Description: setSeed expects random seed
+
+  stopSound
+    Description: Functions stopSound expects sound description name (without .sf suffix) and optional parent object name
+
+  stopTextureAnimation
+    Description: stopTextureAnimation expects texture animation name
+
+-----------------------------------------------------------------------------
+
+
+Scriptable (C++) functions of Character:
+
+  activateMovementAnimation
+    Description: activateMovementAnimation expects target name
+
+  activateSecondaryMovementAnimation
+    Description: activateSecondaryMovementAnimation expects secondary movement animation name
+
+  addAnimation
+    Description: addAnimation expects animation base name, optional end and optional pre behaviour (RESET, CONSTANT, REPEAT, OSCILLATE)
+
+  addAnimationListener
+    Description: addAnimationListener expects a animation name, function and time
+
+  addCollisionBone
+    Description: addCollisionBone expects bone name and damage multiplier
+
+  addControlSector
+    Description: addControlSector expects min angle (degrees, forward=0), max angle (degrees) and control vector length limit [0,1]. Angles increase clockwise and zero angle is forward.
+
+  addLocalVelocity
+    Description: addLocalVelocity expects object space delta velocity (x,y,z)
+
+  addMorphAnimation
+    Description: addMorphAnimation expects morph base object name, morph animation gm file name and optional end behaviour (REPEAT,CONSTANT,RESET,OSCILLATE)
+
+  addNonLinearTextureAnimation
+    Description: addNonLinearTextureAnimation expects new animation name, source animation name and frame table
+
+  addPhysicalCombatMove
+    Description: addPhysicalCombatMove adds a new physical combat move. Expects Name, Anim name (preloaded primary or secondary), Type; STRIKE/LOCK, Type; CONTACT/NONCONTACT, Height of hit, Amount of damage, Direction of force (angle in degrees, forward=0, angles increase c
+
+  addPrimaryStateListener
+    Description: addPrimaryStateListener expects a state name, function, time and state flags
+
+  addSecondaryAnimation
+    Description: addSecondaryAnimation prepares a secondary animation from animation name and a set of bones ( only top-level bones in hierarchy need to be specified )
+
+  addSecondaryStateListener
+    Description: addSecondaryStateListener expects a state name, function, time and state flags
+
+  addTextureAnimation
+    Description: addTextureAnimation expects animation name, target material name, image file name format string, first image index, last image index (inclusive), playback frame rate and end behaviour type (REPEAT, CONSTANT, OSCILLATE)
+
+  addTimerEvent
+    Description: addTimerEvent expects function and time in seconds
+
+  addWeaponToInventory
+    Description: addWeaponToInventory expects GameWeapon table
+
+  addWorldVelocity
+    Description: addWorldVelocity expects world space delta velocity (x,y,z)
+
+  aimAt
+    Description: aimAt expects game object or (x,y,z) position as 1.parameter
+
+  alignRotation
+    Description: alignRotation expects world space vector (x,y,z) representing up
+
+  blendAnimation
+    Description: blendAnimation expects animation base name, blend time, optional frames per second (negative fps causes reverse playback) and optional start time
+
+  blendMorphAnimation
+    Description: blendMorphAnimation expects morph animation name, blend time and optional start time
+
+  blendSecondaryAnimation
+    Description: blendSecondaryAnimation expects animation base name, blend time, optional frames-per-second and optional start time
+
+  boundSphere
+    Description: boundSphere returns object bounding sphere radius
+
+  canMove
+    Description: canMove expects (x,y,z) delta
+
+  canSee
+    Description: canSee returns true if character passed in as parameter can be seen
+
+  cell
+    Description: cell returns the cell where the object is
+
+  clearSecondaryAnimations
+    Description: clearSecondaryAnimations clears secondary blender
+
+  createMovementAnimation
+    Description: createMovementAnimation expects name string
+
+  createSecondaryMovementAnimation
+    Description: createSecondaryMovementAnimation expects name string
+
+  cycleWeapon
+    Description: cycleWeapon cycles weapon to next weapon
+
+  disableDynamicShadow
+    Description: disableDynamicShadow disables dynamic shadow
+
+  enableDynamicShadow
+    Description: enableDynamicShadow enables dynamic shadow
+
+  endPhysicalAttack
+    Description: endPhysicalAttack ends current physical move
+
+  evaluatePrimaryState
+    Description: evaluatePrimaryState forces player state evaluation
+
+  evaluateSecondaryState
+    Description: evaluateSecondaryState forces player state evaluation
+
+  fadeInSoundAt
+    Description: Functions fadeInSoundAt expects sound description name (without .sf suffix), fade time, (x,y,z) offset and optional parent object name
+
+  fadeOutSound
+    Description: Functions fadeOutSound expects sound description name (without .sf suffix), fade time, and optional parent object name
+
+  getAngleTo
+    Description: getAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getAnimLength
+    Description: getAnimLength expects string
+
+  getComputerControl
+    Description: getComputerControl expects no parameters
+
+  getDistanceTo
+    Description: getDistanceTo expects game object or (x,y,z) position as 1.parameter
+
+  getForward
+    Description: Function getForward expects valid index in range [0,3) as 1.parameter
+
+  getGameObject
+    Description: getGameObject expects string
+
+  getHealth
+    Description: getHealth returns health
+
+  getLocalVelocity
+    Description: Function getLocalVelocity expects valid index in range [0,3) as 1.parameter
+
+  getPhysicalAnim
+    Description: getPhysicalAnim returns anim associated with move.
+
+  getPosition
+    Description: Function getPosition expects valid index in range [0,3) as 1.parameter
+
+  getPrimaryStateEndTime
+    Description: getPrimaryStateEndTime returns primary state end time, expects 1 string parameter
+
+  getRandomInteger
+    Description: Functions getRandomInteger returns integer in range [first,second]
+
+  getRight
+    Description: Function getRight expects valid index in range [0,3) as 1.parameter
+
+  getSecondaryStateEndTime
+    Description: getSecondaryStateEndTime returns secondary state end time, expects 1 string parameter
+
+  getSignedAngleTo
+    Description: getSignedAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getSignedWorldAngleTo
+    Description: getSignedWorldAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getTextureAnimationTime
+    Description: getTextureAnimationTime expects texture animation name
+
+  getTimerEventCount
+    Description: Functions getTimerEventCount returns number of timer event that start with specified string
+
+  getUp
+    Description: Function getUp expects valid index in range [0,3) as 1.parameter
+
+  getVelocity
+    Description: Function getVelocity expects valid index in range [0,3) as 1.parameter
+
+  groundMaterial
+    Description: groundMaterial returns ground collision material
+
+  hidden
+    Description: hidden returns true if object is hidden.
+
+  hide
+    Description: hide hides object.
+
+  include
+    Description: include expects script name
+
+  isAiming
+    Description: isAiming returns true (1) if character is aiming weapon, false (nil) otherwise
+
+  isCrouched
+    Description: isCrouched expects no parameters
+
+  isDead
+    Description: isDead expects no parameters
+
+  isHurting
+    Description: isHurting returns true (1) if character is hurting, false (nil) otherwise
+
+  isInFront
+    Description: isInFront returns true if object or position is in front
+
+  isOnRightSide
+    Description: isOnRightSide returns true if object or position is on right side
+
+  isReloading
+    Description: isReloading returns true (1) if character is reloading its' weapon, false (nil) otherwise
+
+  isRolling
+    Description: isRolling returns true (1) if character is rolling, false (nil) otherwise
+
+  loadSound
+    Description: Functions loadSound expects sound description name (without .sf suffix)
+
+  lookAt
+    Description: lookAt expects game object or (x,y,z) position as 1.parameter
+
+  maxRunningControl
+    Description: maxRunningControl returns max running controller range [0,1]
+
+  maxRunningSpeed
+    Description: maxRunningSpeed returns max running speed, m/s
+
+  maxSneakingControl
+    Description: maxSneakingControl returns max sneaking controller range [0,1]
+
+  maxSneakingSpeed
+    Description: maxSneakingSpeed returns max sneaking speed, m/s
+
+  maxWalkingControl
+    Description: maxWalkingControl returns max walking controller range [0,1]
+
+  maxWalkingSpeed
+    Description: maxWalkingSpeed returns max walking speed, m/s
+
+  minRunningControl
+    Description: minRunningControl returns min running controller range [0,1]
+
+  minRunningSpeed
+    Description: minRunningSpeed returns min running speed, m/s
+
+  minSneakingControl
+    Description: minSneakingControl returns min sneaking controller range [0,1]
+
+  minSneakingSpeed
+    Description: minSneakingSpeed returns min sneaking speed, m/s
+
+  minWalkingControl
+    Description: minWalkingControl returns min walking controller range [0,1]
+
+  minWalkingSpeed
+    Description: minWalkingSpeed returns min walking speed, m/s
+
+  name
+    Description: name returns name of the object as set by setName(<string>)
+
+  physicalAttack
+    Description: physicalAttack attacks physically with specified move.
+
+  playDirectedParticleSystemAt
+    Description: Functions playDirectedParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset, (x,y,z) direction vector and optional parent object name
+
+  playMorphAnimation
+    Description: playMorphAnimation expects morph animation gm file name
+
+  playMorphAnimationOnce
+    Description: playMorphAnimationOnce expects morph base object name, morph animation gm file name and optional end behaviour (REPEAT,CONSTANT,RESET,OSCILLATE)
+
+  playParticleSystem
+    Description: Functions playParticleSystem expects particle system name (without .psf suffix) and optional parent object name
+
+  playParticleSystemAt
+    Description: Functions playParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset and optional parent object name
+
+  playSound
+    Description: Functions playSound expects sound description name (without .sf suffix) and optional parent object name
+
+  playSoundAt
+    Description: Functions playSoundAt expects sound description name (without .sf suffix), (x,y,z) offset and optional parent object name
+
+  playSoundOffset
+    Description: Functions playSoundOffset expects sound description name (without .sf suffix), start time and optional parent object name
+
+  playTextureAnimation
+    Description: playTextureAnimation expects texture animation name
+
+  playWorldSpaceAnimation
+    Description: playWorldSpaceAnimation expects animation file name (.sg included), biped name and optional end behaviour (REPEAT,CONSTANT,OSCILLATE,RESET) and start time
+
+  projectPositionOnForward
+    Description: projectPositionOnForward returns length of (x,y,z) projected on forward vector
+
+  projectPositionOnRight
+    Description: projectPositionOnRight returns length of (x,y,z) projected on right vector
+
+  random
+    Description: random returns random in half-open range [0,1)
+
+  receiveDamage
+    Description: receiveDamage reduces character health. Returns "ALIVE" if character died in the process, "DEAD" otherwise.
+
+  removeTimerEvents
+    Description: removeTimerEvents expects name start string of timer event functions to remove
+
+  resetInputState
+
+  rotateY
+    Description: rotateY expects angle
+
+  setAimingTimeAfterShooting
+    Description: setAimingTimeAfterShooting expects aiming time after shooting, in seconds
+
+  setAnimation
+    Description: setAnimation expects a string, animation base name
+
+  setAnimationFolder
+    Description: setAnimationFolder expects animation folder name (directory name in characters/ folder)
+
+  setBalanceLostThreshold
+    Description: setBalanceLostThreshold sets the threshold below which the character will lose balance.
+
+  setBoundSphere
+    Description: setBoundSphere expects meters
+
+  setCharacterCollisionRadius
+    Description: setCharacterCollisionRadius character-character collision radius
+
+  setCrouchBackwardSpeed
+    Description: setCrouchBackwardSpeed expects number
+
+  setCrouchStrafingSpeed
+    Description: setCrouchStrafingSpeed expects number
+
+  setCrouchWalkingSpeed
+    Description: setCrouchWalkingSpeed expects number
+
+  setDynamicShadow
+    Description: setDynamicShadow expects shadow object name and shadow length
+
+  setFallingFriction
+    Description: setFallingFriction expects relative speed decrease in second when falling
+
+  setFriction
+    Description: setFriction expects relative speed decrease in second
+
+  setGravity
+    Description: setGravity expects G's
+
+  setHeadTurnFixBlendDelay
+    Description: setHeadTurnFixBlendDelay expects head turning blend time
+
+  setHealth
+    Description: setHealth expects number
+
+  setLOD
+    Description: setLOD expects a mesh file name, LOD min size limit (pixels) and max size limit
+
+  setLookingHeadBoneTransformFix
+    Description: setLookingHeadBoneTransformFix expects anim name
+
+  setMaxAnimSlewRatePrimary
+    Description: setMaxAnimSlewRatePrimary expects primary animation blender max slew rate (weight/s)
+
+  setMaxAnimSlewRateSecondary
+    Description: setMaxAnimSlewRateSecondary expects secondary animation blender max slew rate (weight/s)
+
+  setMesh
+    Description: setMesh expects a mesh file name, LOD min size limit (pixels) and max size limit
+
+  setMorphBase
+    Description: setMorphBase expects morph base object name
+
+  setName
+    Description: setName expects a name string
+
+  setPeekMoveCheckDistance
+    Description: setPeekMoveCheckDistance expects distance of movement in peek
+
+  setPhysicalHitRange
+    Description: setPhysicalHitRange sets physical hit contact cylinder radius.
+
+  setPosition
+    Description: setPosition expects cell object table & (x,y,z) position
+
+  setPrimaryState
+    Description: setPrimaryState expects a state name string
+
+  setRollingSpeedBackward
+    Description: setRollingSpeedBackward expects backward rolling speed (m/s)
+
+  setRollingSpeedForward
+    Description: setRollingSpeedForward expects forward rolling speed (m/s)
+
+  setRollingSpeedSideways
+    Description: setRollingSpeedSideways expects sideways rolling speed (m/s)
+
+  setRotationSpeed
+    Description: setRotationSpeed expects degrees/s
+
+  setRotationToIdentity
+    Description: setRotationToIdentity sets rotation matrix to identity
+
+  setRunningControlRange
+    Description: setRunningControlRange expects min and max running controller range [0,1]
+
+  setRunningSpeedRange
+    Description: setRunningSpeedRange expects min and max running speed, m/s
+
+  setSecondaryMovementAnimation
+    Description: setSecondaryMovementAnimation expects secondary movement animation name
+
+  setSecondaryState
+    Description: setSecondaryState expects a state name string
+
+  setSeed
+    Description: setSeed expects random seed
+
+  setSneakingControlRange
+    Description: setSneakingControlRange expects min and max sneaking controller range [0,1]
+
+  setSneakingSpeedRange
+    Description: setSneakingSpeedRange expects min and max sneaking speed, m/s
+
+  setSteepSurface
+    Description: setSteepSurface expects degrees
+
+  setThrowAngle
+    Description: setThrowAngle expects amount of degrees to throw upwards
+
+  setThrowBone
+    Description: setThrowBone expects bone name
+
+  setVelocity
+    Description: setVelocity expects m/s
+
+  setWalkingControlRange
+    Description: setWalkingControlRange expects min and max walking controller range [0,1]
+
+  setWalkingSpeedRange
+    Description: setWalkingSpeedRange expects min and max walking speed, m/s
+
+  setWeapon
+    Description: setWeapon expects GameWeapon table
+
+  speed
+    Description: speed returns object speed in m/s
+
+  stateControllable
+    Description: stateControllable return true if player is in controllable state
+
+  stateFalling
+    Description: stateFalling return true if player is falling
+
+  stateInAir
+    Description: stateInAir return true if player is in air
+
+  stopSound
+    Description: Functions stopSound expects sound description name (without .sf suffix) and optional parent object name
+
+  stopTextureAnimation
+    Description: stopTextureAnimation expects texture animation name
+
+  stopWorldSpaceAnimation
+    Description: stopWorldSpaceAnimation stops any active world animation
+
+  throwProjectile
+    Description: throwProjectile expects projectile script name 
+
+  unhide
+    Description: unhide unhides object.
+
+  weapon
+    Description: weapon returns current weapon
+
+-----------------------------------------------------------------------------
+
+
+Scriptable (C++) functions of Dynamic Object:
+
+  addLocalVelocity
+    Description: addLocalVelocity expects object space delta velocity (x,y,z)
+
+  addNonLinearTextureAnimation
+    Description: addNonLinearTextureAnimation expects new animation name, source animation name and frame table
+
+  addTextureAnimation
+    Description: addTextureAnimation expects animation name, target material name, image file name format string, first image index, last image index (inclusive), playback frame rate and end behaviour type (REPEAT, CONSTANT, OSCILLATE)
+
+  addTimerEvent
+    Description: addTimerEvent expects function and time in seconds
+
+  addWorldVelocity
+    Description: addWorldVelocity expects world space delta velocity (x,y,z)
+
+  alignRotation
+    Description: alignRotation expects world space vector (x,y,z) representing up
+
+  boundSphere
+    Description: boundSphere returns object bounding sphere radius
+
+  cell
+    Description: cell returns the cell where the object is
+
+  disableDynamicShadow
+    Description: disableDynamicShadow disables dynamic shadow
+
+  enableDynamicShadow
+    Description: enableDynamicShadow enables dynamic shadow
+
+  fadeInSoundAt
+    Description: Functions fadeInSoundAt expects sound description name (without .sf suffix), fade time, (x,y,z) offset and optional parent object name
+
+  fadeOutSound
+    Description: Functions fadeOutSound expects sound description name (without .sf suffix), fade time, and optional parent object name
+
+  getAngleTo
+    Description: getAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getDistanceTo
+    Description: getDistanceTo expects game object or (x,y,z) position as 1.parameter
+
+  getForward
+    Description: Function getForward expects valid index in range [0,3) as 1.parameter
+
+  getGameObject
+    Description: getGameObject expects string
+
+  getLocalVelocity
+    Description: Function getLocalVelocity expects valid index in range [0,3) as 1.parameter
+
+  getPosition
+    Description: Function getPosition expects valid index in range [0,3) as 1.parameter
+
+  getRandomInteger
+    Description: Functions getRandomInteger returns integer in range [first,second]
+
+  getRight
+    Description: Function getRight expects valid index in range [0,3) as 1.parameter
+
+  getSignedAngleTo
+    Description: getSignedAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getSignedWorldAngleTo
+    Description: getSignedWorldAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getTextureAnimationTime
+    Description: getTextureAnimationTime expects texture animation name
+
+  getTimerEventCount
+    Description: Functions getTimerEventCount returns number of timer event that start with specified string
+
+  getUp
+    Description: Function getUp expects valid index in range [0,3) as 1.parameter
+
+  getVelocity
+    Description: Function getVelocity expects valid index in range [0,3) as 1.parameter
+
+  hidden
+    Description: hidden returns true if object is hidden.
+
+  hide
+    Description: hide hides object.
+
+  include
+    Description: include expects script name
+
+  isInFront
+    Description: isInFront returns true if object or position is in front
+
+  isOnRightSide
+    Description: isOnRightSide returns true if object or position is on right side
+
+  loadSound
+    Description: Functions loadSound expects sound description name (without .sf suffix)
+
+  lookAt
+    Description: lookAt expects game object or (x,y,z) position as 1.parameter
+
+  name
+    Description: name returns name of the object as set by setName(<string>)
+
+  playDirectedParticleSystemAt
+    Description: Functions playDirectedParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset, (x,y,z) direction vector and optional parent object name
+
+  playParticleSystem
+    Description: Functions playParticleSystem expects particle system name (without .psf suffix) and optional parent object name
+
+  playParticleSystemAt
+    Description: Functions playParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset and optional parent object name
+
+  playSound
+    Description: Functions playSound expects sound description name (without .sf suffix) and optional parent object name
+
+  playSoundAt
+    Description: Functions playSoundAt expects sound description name (without .sf suffix), (x,y,z) offset and optional parent object name
+
+  playSoundOffset
+    Description: Functions playSoundOffset expects sound description name (without .sf suffix), start time and optional parent object name
+
+  playTextureAnimation
+    Description: playTextureAnimation expects texture animation name
+
+  playWorldSpaceAnimation
+    Description: playWorldSpaceAnimation expects animation file name (.sg included), optional end behaviour (REPEAT,CONSTANT,OSCILLATE,RESET) and start time
+
+  projectPositionOnForward
+    Description: projectPositionOnForward returns length of (x,y,z) projected on forward vector
+
+  projectPositionOnRight
+    Description: projectPositionOnRight returns length of (x,y,z) projected on right vector
+
+  random
+    Description: random returns random in half-open range [0,1)
+
+  removeTimerEvents
+    Description: removeTimerEvents expects name start string of timer event functions to remove
+
+  rotateY
+    Description: rotateY expects angle
+
+  setBoundSphere
+    Description: setBoundSphere expects meters
+
+  setDynamicShadow
+    Description: setDynamicShadow expects shadow object name and shadow length
+
+  setName
+    Description: setName expects a name string
+
+  setPosition
+    Description: setPosition expects cell object table & (x,y,z) position
+
+  setRotationToIdentity
+    Description: setRotationToIdentity sets rotation matrix to identity
+
+  setSeed
+    Description: setSeed expects random seed
+
+  setSpin
+    Description: setSpin expects spin axis (x,y,z) and angle speed in degrees
+
+  setVelocity
+    Description: setVelocity expects m/s
+
+  speed
+    Description: speed returns object speed in m/s
+
+  stopSound
+    Description: Functions stopSound expects sound description name (without .sf suffix) and optional parent object name
+
+  stopTextureAnimation
+    Description: stopTextureAnimation expects texture animation name
+
+  stopWorldSpaceAnimation
+    Description: stopWorldSpaceAnimation stops any active animation
+
+  unhide
+    Description: unhide unhides object.
+
+-----------------------------------------------------------------------------
+
+
+Scriptable (C++) functions of Level:
+
+  addNonLinearTextureAnimation
+    Description: addNonLinearTextureAnimation expects new animation name, source animation name and frame table
+
+  addTextureAnimation
+    Description: addTextureAnimation expects animation name, target material name, image file name format string, first image index, last image index (inclusive), playback frame rate and end behaviour type (REPEAT, CONSTANT, OSCILLATE)
+
+  addTimerEvent
+    Description: addTimerEvent expects function and time in seconds
+
+  createBoxTrigger
+    Description: createBoxTrigger expects trigger script filename and trigger dummy object name
+
+  createCharacter
+    Description: createCharacter expects script filename
+
+  createFlareSet
+    Description: createFlareSet expects flare image name, flare world diameter, fade time, max count and cell name
+
+  createNoise
+    Description: createNoise expects noise source game object, noise level, fade distance start, fade distance end, fade out time start, fade out time end
+
+  createWeapon
+    Description: createWeapon expects script filename
+
+  fadeInSoundAt
+    Description: Functions fadeInSoundAt expects sound description name (without .sf suffix), fade time, (x,y,z) offset and optional parent object name
+
+  fadeOutSound
+    Description: Functions fadeOutSound expects sound description name (without .sf suffix), fade time, and optional parent object name
+
+  getCell
+    Description: getCell returns cell by name or index.
+
+  getCharacter
+    Description: getCharacter returns character by name
+
+  getDynamicObject
+    Description: getDynamicObject returns dynamic level geometry object by name
+
+  getPath
+    Description: getPath returns guard path by name
+
+  getRandomInteger
+    Description: Functions getRandomInteger returns integer in range [first,second]
+
+  getTextureAnimationTime
+    Description: getTextureAnimationTime expects texture animation name
+
+  getTimerEventCount
+    Description: Functions getTimerEventCount returns number of timer event that start with specified string
+
+  importGeometry
+    Description: importGeometry expects level scene file name and a table of collision material types (first one default)
+
+  include
+    Description: include expects script name
+
+  isActiveCutScene
+    Description: isActiveCutScene returns true if cut scene is active.
+
+  loadDynamicObjects
+    Description: loadDynamicObjects expects level scene file name
+
+  loadProjectiles
+    Description: loadProjectiles pre-loads 'count' projectiles to projectilemanager cache, expects projectile source file name and count
+
+  loadSound
+    Description: Functions loadSound expects sound description name (without .sf suffix)
+
+  name
+    Description: name returns name of the object as set by setName(<string>)
+
+  playCutScene
+    Description: playCutScene expects cut scene lua file name
+
+  playDirectedParticleSystemAt
+    Description: Functions playDirectedParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset, (x,y,z) direction vector and optional parent object name
+
+  playParticleSystem
+    Description: Functions playParticleSystem expects particle system name (without .psf suffix) and optional parent object name
+
+  playParticleSystemAt
+    Description: Functions playParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset and optional parent object name
+
+  playSound
+    Description: Functions playSound expects sound description name (without .sf suffix) and optional parent object name
+
+  playSoundAt
+    Description: Functions playSoundAt expects sound description name (without .sf suffix), (x,y,z) offset and optional parent object name
+
+  playSoundOffset
+    Description: Functions playSoundOffset expects sound description name (without .sf suffix), start time and optional parent object name
+
+  playTextureAnimation
+    Description: playTextureAnimation expects texture animation name
+
+  random
+    Description: random returns random in half-open range [0,1)
+
+  removeCharacter
+    Description: removeCharacter expects character object
+
+  removeDynamicObjects
+    Description: removeDynamicObjects expects table of dynamic object names
+
+  removeTimerEvents
+    Description: removeTimerEvents expects name start string of timer event functions to remove
+
+  removeWeapon
+    Description: removeWeapon expects weapon object
+
+  setBackgroundToCells
+    Description: setBackgroundToCells background (BACKGROUND tagged) object name and table of cell names
+
+  setMainCharacter
+    Description: setMainCharacter expects GameCharacter object table
+
+  setName
+    Description: setName expects a name string
+
+  setSeed
+    Description: setSeed expects random seed
+
+  setShadowColor
+    Description: setShadowColor expects RGBA 0-255
+
+  signalExplosion
+    Description: signalExplosion expects explosion source, damage, damage fade out start distance, damage fade out end distance
+
+  stopSound
+    Description: Functions stopSound expects sound description name (without .sf suffix) and optional parent object name
+
+  stopTextureAnimation
+    Description: stopTextureAnimation expects texture animation name
+
+-----------------------------------------------------------------------------
+
+
+Scriptable (C++) functions of Weapon:
+
+  addLocalVelocity
+    Description: addLocalVelocity expects object space delta velocity (x,y,z)
+
+  addNonLinearTextureAnimation
+    Description: addNonLinearTextureAnimation expects new animation name, source animation name and frame table
+
+  addTextureAnimation
+    Description: addTextureAnimation expects animation name, target material name, image file name format string, first image index, last image index (inclusive), playback frame rate and end behaviour type (REPEAT, CONSTANT, OSCILLATE)
+
+  addTimerEvent
+    Description: addTimerEvent expects function and time in seconds
+
+  addWorldVelocity
+    Description: addWorldVelocity expects world space delta velocity (x,y,z)
+
+  alignRotation
+    Description: alignRotation expects world space vector (x,y,z) representing up
+
+  boundSphere
+    Description: boundSphere returns object bounding sphere radius
+
+  cell
+    Description: cell returns the cell where the object is
+
+  disableDynamicShadow
+    Description: disableDynamicShadow disables dynamic shadow
+
+  enableDynamicShadow
+    Description: enableDynamicShadow enables dynamic shadow
+
+  fadeInSoundAt
+    Description: Functions fadeInSoundAt expects sound description name (without .sf suffix), fade time, (x,y,z) offset and optional parent object name
+
+  fadeOutSound
+    Description: Functions fadeOutSound expects sound description name (without .sf suffix), fade time, and optional parent object name
+
+  fireAt
+    Description: fireAt expects shooter character and x, y, z shooting target.
+
+  fireWithoutBullet
+    Description: fireWithoutBullet expects shooter character and x, y, z shooting direction.
+
+  getAngleTo
+    Description: getAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getDistanceTo
+    Description: getDistanceTo expects game object or (x,y,z) position as 1.parameter
+
+  getForward
+    Description: Function getForward expects valid index in range [0,3) as 1.parameter
+
+  getGameObject
+    Description: getGameObject expects string
+
+  getLocalVelocity
+    Description: Function getLocalVelocity expects valid index in range [0,3) as 1.parameter
+
+  getPosition
+    Description: Function getPosition expects valid index in range [0,3) as 1.parameter
+
+  getRandomInteger
+    Description: Functions getRandomInteger returns integer in range [first,second]
+
+  getRight
+    Description: Function getRight expects valid index in range [0,3) as 1.parameter
+
+  getShellsPerClip
+    Description: getShellsPerClip returns number of shells per clip
+
+  getShellsRemaining
+    Description: getShellsRemaining returns count of shells remaining
+
+  getSignedAngleTo
+    Description: getSignedAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getSignedWorldAngleTo
+    Description: getSignedWorldAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getTextureAnimationTime
+    Description: getTextureAnimationTime expects texture animation name
+
+  getTimerEventCount
+    Description: Functions getTimerEventCount returns number of timer event that start with specified string
+
+  getUp
+    Description: Function getUp expects valid index in range [0,3) as 1.parameter
+
+  getVelocity
+    Description: Function getVelocity expects valid index in range [0,3) as 1.parameter
+
+  hidden
+    Description: hidden returns true if object is hidden.
+
+  hide
+    Description: hide hides object.
+
+  include
+    Description: include expects script name
+
+  isInFront
+    Description: isInFront returns true if object or position is in front
+
+  isOnRightSide
+    Description: isOnRightSide returns true if object or position is on right side
+
+  loadSound
+    Description: Functions loadSound expects sound description name (without .sf suffix)
+
+  lookAt
+    Description: lookAt expects game object or (x,y,z) position as 1.parameter
+
+  name
+    Description: name returns name of the object as set by setName(<string>)
+
+  owner
+    Description: owner returns owner character of the weapon
+
+  playDirectedParticleSystemAt
+    Description: Functions playDirectedParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset, (x,y,z) direction vector and optional parent object name
+
+  playParticleSystem
+    Description: Functions playParticleSystem expects particle system name (without .psf suffix) and optional parent object name
+
+  playParticleSystemAt
+    Description: Functions playParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset and optional parent object name
+
+  playSound
+    Description: Functions playSound expects sound description name (without .sf suffix) and optional parent object name
+
+  playSoundAt
+    Description: Functions playSoundAt expects sound description name (without .sf suffix), (x,y,z) offset and optional parent object name
+
+  playSoundOffset
+    Description: Functions playSoundOffset expects sound description name (without .sf suffix), start time and optional parent object name
+
+  playTextureAnimation
+    Description: playTextureAnimation expects texture animation name
+
+  projectPositionOnForward
+    Description: projectPositionOnForward returns length of (x,y,z) projected on forward vector
+
+  projectPositionOnRight
+    Description: projectPositionOnRight returns length of (x,y,z) projected on right vector
+
+  random
+    Description: random returns random in half-open range [0,1)
+
+  reload
+    Description: reload fills weapon ammo
+
+  removeTimerEvents
+    Description: removeTimerEvents expects name start string of timer event functions to remove
+
+  rotateY
+    Description: rotateY expects angle
+
+  setBoundSphere
+    Description: setBoundSphere expects meters
+
+  setBullet
+    Description: setBullet expects string
+
+  setDynamicShadow
+    Description: setDynamicShadow expects shadow object name and shadow length
+
+  setEmptyShell
+    Description: setEmptyShell expects string
+
+  setFireMode
+    Description: setFireMode expects AUTO or SINGLE
+
+  setFireRate
+    Description: setFireRate expects number
+
+  setMesh
+    Description: setMesh expects a mesh file name
+
+  setName
+    Description: setName expects a name string
+
+  setPosition
+    Description: setPosition expects cell object table & (x,y,z) position
+
+  setRecoilErrorCorrectionPerSec
+    Description: setRecoilErrorCorrectionPerSec expects degrees/s
+
+  setRecoilErrorMax
+    Description: setRecoilErrorMax expects angle
+
+  setRecoilErrorMin
+    Description: setRecoilErrorMin expects angle
+
+  setRecoilErrorPerShot
+    Description: setRecoilErrorPerShot expects angle
+
+  setRotationToIdentity
+    Description: setRotationToIdentity sets rotation matrix to identity
+
+  setSeed
+    Description: setSeed expects random seed
+
+  setShellEjectDelay
+    Description: setShellEjectDelay expects time in seconds
+
+  setShellsPerClip
+    Description: setShellsPerClip expects number
+
+  setShellsRemaining
+    Description: setShellsRemaining expects number
+
+  setShotsPerLaunch
+    Description: setShotsPerLaunch expects number
+
+  setSpreadConeAngle
+    Description: setSpreadConeAngle expects angle
+
+  setVelocity
+    Description: setVelocity expects m/s
+
+  speed
+    Description: speed returns object speed in m/s
+
+  stopSound
+    Description: Functions stopSound expects sound description name (without .sf suffix) and optional parent object name
+
+  stopTextureAnimation
+    Description: stopTextureAnimation expects texture animation name
+
+  unhide
+    Description: unhide unhides object.
+
+-----------------------------------------------------------------------------
+
+
+Scriptable (C++) functions of Path:
+
+  addNonLinearTextureAnimation
+    Description: addNonLinearTextureAnimation expects new animation name, source animation name and frame table
+
+  addTextureAnimation
+    Description: addTextureAnimation expects animation name, target material name, image file name format string, first image index, last image index (inclusive), playback frame rate and end behaviour type (REPEAT, CONSTANT, OSCILLATE)
+
+  addTimerEvent
+    Description: addTimerEvent expects function and time in seconds
+
+  fadeInSoundAt
+    Description: Functions fadeInSoundAt expects sound description name (without .sf suffix), fade time, (x,y,z) offset and optional parent object name
+
+  fadeOutSound
+    Description: Functions fadeOutSound expects sound description name (without .sf suffix), fade time, and optional parent object name
+
+  getClosestPointIndex
+    Description: getClosestPointIndex expects x,y,z in world space, returns closest path point index (one-based)
+
+  getPointPosition
+    Description: getPointPosition expects point and axis indices (point index one-based, axis index zero-based)
+
+  getRandomInteger
+    Description: Functions getRandomInteger returns integer in range [first,second]
+
+  getTextureAnimationTime
+    Description: getTextureAnimationTime expects texture animation name
+
+  getTimerEventCount
+    Description: Functions getTimerEventCount returns number of timer event that start with specified string
+
+  include
+    Description: include expects script name
+
+  loadSound
+    Description: Functions loadSound expects sound description name (without .sf suffix)
+
+  name
+    Description: name returns name of the object as set by setName(<string>)
+
+  playDirectedParticleSystemAt
+    Description: Functions playDirectedParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset, (x,y,z) direction vector and optional parent object name
+
+  playParticleSystem
+    Description: Functions playParticleSystem expects particle system name (without .psf suffix) and optional parent object name
+
+  playParticleSystemAt
+    Description: Functions playParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset and optional parent object name
+
+  playSound
+    Description: Functions playSound expects sound description name (without .sf suffix) and optional parent object name
+
+  playSoundAt
+    Description: Functions playSoundAt expects sound description name (without .sf suffix), (x,y,z) offset and optional parent object name
+
+  playSoundOffset
+    Description: Functions playSoundOffset expects sound description name (without .sf suffix), start time and optional parent object name
+
+  playTextureAnimation
+    Description: playTextureAnimation expects texture animation name
+
+  points
+    Description: points returns number of points in path
+
+  random
+    Description: random returns random in half-open range [0,1)
+
+  removeTimerEvents
+    Description: removeTimerEvents expects name start string of timer event functions to remove
+
+  setName
+    Description: setName expects a name string
+
+  setSeed
+    Description: setSeed expects random seed
+
+  stopSound
+    Description: Functions stopSound expects sound description name (without .sf suffix) and optional parent object name
+
+  stopTextureAnimation
+    Description: stopTextureAnimation expects texture animation name
+
+-----------------------------------------------------------------------------
+
+
+Scriptable (C++) functions of Trigger:
+
+  addLocalVelocity
+    Description: addLocalVelocity expects object space delta velocity (x,y,z)
+
+  addNonLinearTextureAnimation
+    Description: addNonLinearTextureAnimation expects new animation name, source animation name and frame table
+
+  addTextureAnimation
+    Description: addTextureAnimation expects animation name, target material name, image file name format string, first image index, last image index (inclusive), playback frame rate and end behaviour type (REPEAT, CONSTANT, OSCILLATE)
+
+  addTimerEvent
+    Description: addTimerEvent expects function and time in seconds
+
+  addWorldVelocity
+    Description: addWorldVelocity expects world space delta velocity (x,y,z)
+
+  alignRotation
+    Description: alignRotation expects world space vector (x,y,z) representing up
+
+  boundSphere
+    Description: boundSphere returns object bounding sphere radius
+
+  cell
+    Description: cell returns the cell where the object is
+
+  disableDynamicShadow
+    Description: disableDynamicShadow disables dynamic shadow
+
+  enableDynamicShadow
+    Description: enableDynamicShadow enables dynamic shadow
+
+  fadeInSoundAt
+    Description: Functions fadeInSoundAt expects sound description name (without .sf suffix), fade time, (x,y,z) offset and optional parent object name
+
+  fadeOutSound
+    Description: Functions fadeOutSound expects sound description name (without .sf suffix), fade time, and optional parent object name
+
+  getAngleTo
+    Description: getAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getDimensions
+    Description: Function getDimensions expects valid index in range [0,3) as 1.parameter
+
+  getDistanceTo
+    Description: getDistanceTo expects game object or (x,y,z) position as 1.parameter
+
+  getForward
+    Description: Function getForward expects valid index in range [0,3) as 1.parameter
+
+  getGameObject
+    Description: getGameObject expects string
+
+  getLocalVelocity
+    Description: Function getLocalVelocity expects valid index in range [0,3) as 1.parameter
+
+  getPosition
+    Description: Function getPosition expects valid index in range [0,3) as 1.parameter
+
+  getRandomInteger
+    Description: Functions getRandomInteger returns integer in range [first,second]
+
+  getRight
+    Description: Function getRight expects valid index in range [0,3) as 1.parameter
+
+  getSignedAngleTo
+    Description: getSignedAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getSignedWorldAngleTo
+    Description: getSignedWorldAngleTo expects game object or (x,y,z) position as 1.parameter
+
+  getTextureAnimationTime
+    Description: getTextureAnimationTime expects texture animation name
+
+  getTimerEventCount
+    Description: Functions getTimerEventCount returns number of timer event that start with specified string
+
+  getUp
+    Description: Function getUp expects valid index in range [0,3) as 1.parameter
+
+  getVelocity
+    Description: Function getVelocity expects valid index in range [0,3) as 1.parameter
+
+  hidden
+    Description: hidden returns true if object is hidden.
+
+  hide
+    Description: hide hides object.
+
+  include
+    Description: include expects script name
+
+  isInFront
+    Description: isInFront returns true if object or position is in front
+
+  isOnRightSide
+    Description: isOnRightSide returns true if object or position is on right side
+
+  loadSound
+    Description: Functions loadSound expects sound description name (without .sf suffix)
+
+  lookAt
+    Description: lookAt expects game object or (x,y,z) position as 1.parameter
+
+  name
+    Description: name returns name of the object as set by setName(<string>)
+
+  playDirectedParticleSystemAt
+    Description: Functions playDirectedParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset, (x,y,z) direction vector and optional parent object name
+
+  playParticleSystem
+    Description: Functions playParticleSystem expects particle system name (without .psf suffix) and optional parent object name
+
+  playParticleSystemAt
+    Description: Functions playParticleSystemAt expects particle system description name (without .psf suffix), (x,y,z) offset and optional parent object name
+
+  playSound
+    Description: Functions playSound expects sound description name (without .sf suffix) and optional parent object name
+
+  playSoundAt
+    Description: Functions playSoundAt expects sound description name (without .sf suffix), (x,y,z) offset and optional parent object name
+
+  playSoundOffset
+    Description: Functions playSoundOffset expects sound description name (without .sf suffix), start time and optional parent object name
+
+  playTextureAnimation
+    Description: playTextureAnimation expects texture animation name
+
+  projectPositionOnForward
+    Description: projectPositionOnForward returns length of (x,y,z) projected on forward vector
+
+  projectPositionOnRight
+    Description: projectPositionOnRight returns length of (x,y,z) projected on right vector
+
+  random
+    Description: random returns random in half-open range [0,1)
+
+  removeTimerEvents
+    Description: removeTimerEvents expects name start string of timer event functions to remove
+
+  rotateY
+    Description: rotateY expects angle
+
+  setBoundSphere
+    Description: setBoundSphere expects meters
+
+  setDimensions
+    Description: setDimensions expects dimensions (x,y,z)
+
+  setDynamicShadow
+    Description: setDynamicShadow expects shadow object name and shadow length
+
+  setName
+    Description: setName expects a name string
+
+  setPosition
+    Description: setPosition expects cell object table & (x,y,z) position
+
+  setRotationToIdentity
+    Description: setRotationToIdentity sets rotation matrix to identity
+
+  setSeed
+    Description: setSeed expects random seed
+
+  setVelocity
+    Description: setVelocity expects m/s
+
+  speed
+    Description: speed returns object speed in m/s
+
+  stopSound
+    Description: Functions stopSound expects sound description name (without .sf suffix) and optional parent object name
+
+  stopTextureAnimation
+    Description: stopTextureAnimation expects texture animation name
+
+  unhide
+    Description: unhide unhides object.
+
+-----------------------------------------------------------------------------

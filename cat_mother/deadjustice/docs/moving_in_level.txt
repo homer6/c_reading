@@ -1,0 +1,51 @@
+Moving In Level
+---------------
+
+- Objects from all affected cells must be collected first before checking collisions
+
+
+Algorithm
+---------
+
+...
+// Implemented in derived classes
+obj->moveTo( delta, collisionInfo )
+...
+
+moveTo( delta, collisionInfo )
+  collisionInfo.reset()
+  collisionList.clear()
+  moveToRecurse( delta, this->cell(), collisionInfo, collisionList )
+
+  sort collisionList
+
+  for each object in collisionList
+    if this collides object
+      cut delta if solid
+      update collisionInfo
+
+  update current cell and transform by collisionInfo
+end
+
+moveToRecurse( delta, cell, collisionInfo, collisionList )
+  if this collides cell->bsp()
+    cut delta (cell geometry is always solid)
+    update collisionInfo
+  
+  for each object in cell
+    if this collides object
+      add object and collision distance to collisionList
+
+  for each portal intersecting (cut) delta
+    moveToRecurse( delta, portal->targetCell(), collisionInfo, collisionList )
+end
+
+virtual checkCollisionsAgainstBSP
+virtual Vector3 center() const;
+
+
+Known Issues
+------------
+
+- Doesn't handle correctly the case if object is in other room but volume isn't
+  (fat character just around the corner etc.)

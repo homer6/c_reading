@@ -1,0 +1,69 @@
+# Particle System Commands
+# ------------------------
+
+LocalSpace 1
+	# LocalSpace 1 -- emits particles relative to object
+	# LocalSpace 0 -- emits particles relative to world
+
+EmissionRate 100
+	# particles / sec
+
+EmissionTime 0.1
+	# sec until emission stops
+
+MinEmissionSpeed 0
+MaxEmissionSpeed 100
+	# minimum/maximum velocity for emission
+	# (probably not needed in DJ, should be commented out)
+
+SystemLifeTime 1e6
+	# sec until system is removed
+
+ParticleLifeTime 1e6
+	# sec until particle is removed
+
+MaxParticles 1
+	# max number of simultaneous particles
+
+Gravity 0
+	# m2/s
+
+VelocitySphere 0 0 0 0
+	# volume/set of possible particle initial velocities:
+	# VelocitySphere x y z radius
+	# VelocityBox minx miny minz maxx maxy maxz
+
+PositionSphere 0 0 0 0
+	# volume where particles are born:
+	# PositionSphere x y z radius
+	# PositionBox minx miny minz maxx maxy maxz
+
+Kill NOTHING
+	# NOTHING, RANDOM, OLDEST
+
+Image images/flare_lightbeam1.jpg
+	# use specified image
+
+ImageAnim <file> <rows> <columns> <total frames> <fps> <behaviour = RANDOM, LIFE, LOOP, MIRROR>
+	# use specified animation embedded in single image page
+
+Size 2 2
+	# Size min max
+	# random size in range min-max
+
+Angle 0 0
+	# Angle <min deg> <max deg>
+	# random angle in range min-max
+
+AngleSpeed 0 0
+	# AngleSpeed <min deg/s> <max deg/s>
+
+Blend ADD
+	# Default, use Blend MUL for multiplicative blending
+
+BoundSphere 1
+	# BoundSphere <radius>
+
+SpeedScale 0.01
+	# Scaling relative to particle velocity,
+	# cannot be used with AngleSpeed or Angle commands

@@ -1,0 +1,38 @@
+Character System
+
+
+About Character States
+----------------------
+
+Character states are divided to primary and secondary states. In general, primary states are states which are valid by themselves without requiring any secondary animation. For example RUNNING is valid state by itself. On the other hand, SHOOTING is not, because it requires some primary state like RUNNING/WALKING/STANDING before defining the character state completely.
+
+
+State Animations
+----------------
+
+- Primary state animation applies to the whole body
+
+- Secondary state animation, if any, is applied on the top of the primary state only to pre-defined, secondary state specific set of bones
+
+
+Animation Transitions
+---------------------
+
+- Blending problem: Feet go through ground etc. artifacts -- blending is uncontrollable way to change animations
+
+- Transition animations are preferred to blending (ideal: blending used only in special cases like WALKING/RUNNING transition)
+
+- Each animation-animation pair can have transition points defined
+
+- Animation can change only in transition points (if any tp is defined)
+
+- Transitions are states by themselves (TRANSITION_CROUCH_TO_CRAWL)
+
+
+Controlling Character
+---------------------
+
+- Controls are divided to primary and secondary controls by the states they are referring to
+
+- Secondary state controls are dependent on primary state but not other way round. For example you can shoot if you are running, but you can't shoot if you are jumping. Note that this means that you can also interrupt shooting by jumping.
+

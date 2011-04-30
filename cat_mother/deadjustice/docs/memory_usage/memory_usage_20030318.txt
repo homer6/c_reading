@@ -1,0 +1,87 @@
+INFO: Memory state: Total 119238986 bytes in 98126 blocks
+INFO:   ttings/jani.catmother_02/my documents/projects/pix/surface.cpp: uses 38.5%, 45847612 bytes in 1947 blocks, total 170657228 bytes in 6350 blocks
+INFO:   ttings/jani.catmother_02/my documents/projects/bsp/bspnode.cpp: uses 16.0%, 19114384 bytes in 13429 blocks, total 19114384 bytes in 13429 blocks
+INFO:   i.catmother_02/my documents/projects/bsp/bsppolygonstorage.cpp: uses 14.6%, 17417968 bytes in 183 blocks, total 33838096 bytes in 901 blocks
+INFO:   .catmother_02/my documents/projects/gd/gd_dx9/dx9primitive.cpp: uses 10.4%, 12386174 bytes in 607 blocks, total 12386174 bytes in 607 blocks
+INFO:   tmother_02/my documents/projects/deadjustice/gamecharacter.cpp: uses 3.7%, 4443240 bytes in 5997 blocks, total 13080824 bytes in 18035 blocks
+INFO:   settings/jani.catmother_02/my documents/projects/sg/effect.cpp: uses 2.5%, 2969688 bytes in 1178 blocks, total 2969688 bytes in 1178 blocks
+INFO:   atmother_02/my documents/projects/sd/sd_dx8/dx8soundbuffer.cpp: uses 2.2%, 2649186 bytes in 112 blocks, total 2649186 bytes in 112 blocks
+INFO:   ani.catmother_02/my documents/projects/external/lua/src/lmem.c: uses 2.2%, 2634478 bytes in 27469 blocks, total 5673679 bytes in 47290 blocks
+INFO:   ings/jani.catmother_02/my documents/projects/sgu/scenefile.cpp: uses 1.7%, 2054488 bytes in 7845 blocks, total 5362492 bytes in 29830 blocks
+INFO:   her_02/my documents/projects/deadjustice/movementanimation.cpp: uses 1.5%, 1837524 bytes in 741 blocks, total 1862692 bytes in 754 blocks
+INFO:   d settings/jani.catmother_02/my documents/projects/sg/node.cpp: uses 1.5%, 1789908 bytes in 8259 blocks, total 1795732 bytes in 8287 blocks
+INFO:   ttings/jani.catmother_02/my documents/projects/bsp/bspfile.cpp: uses 1.0%, 1134868 bytes in 13490 blocks, total 48957248 bytes in 27358 blocks
+INFO:   s/jani.catmother_02/my documents/projects/sgu/nodegroupset.cpp: uses 0.9%, 1088468 bytes in 810 blocks, total 2051144 bytes in 2425 blocks
+INFO:   /jani.catmother_02/my documents/projects/anim/interpolator.cpp: uses 0.7%, 838464 bytes in 5748 blocks, total 4579344 bytes in 52509 blocks
+INFO:   documents/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9material: uses 0.5%, 606016 bytes in 557 blocks, total 615808 bytes in 566 blocks
+INFO:   d settings/jani.catmother_02/my documents/projects/sg/mesh.cpp: uses 0.4%, 503596 bytes in 815 blocks, total 602548 bytes in 874 blocks
+INFO:   /jani.catmother_02/my documents/projects/ps/particlesystem.cpp: uses 0.2%, 205248 bytes in 1031 blocks, total 205248 bytes in 1031 blocks
+INFO:   catmother_02/my documents/projects/ps/spriteparticlesystem.cpp: uses 0.1%, 174688 bytes in 1120 blocks, total 175840 bytes in 1130 blocks
+INFO:   ings/jani.catmother_02/my documents/projects/sgu/modelfile.cpp: uses 0.1%, 173060 bytes in 1381 blocks, total 174148 bytes in 1393 blocks
+INFO:   .catmother_02/my documents/projects/id/id_dx8/operator_new.cpp: uses 0.1%, 156980 bytes in 12 blocks, total 312292 bytes in 23 blocks
+INFO:   ttings/jani.catmother_02/my documents/projects/lang/string.cpp: uses 0.1%, 148736 bytes in 958 blocks, total 6798656 bytes in 31730 blocks
+INFO:   i.catmother_02/my documents/projects/deadjustice/gamelevel.cpp: uses 0.1%, 123996 bytes in 273 blocks, total 133356 bytes in 287 blocks
+INFO:    settings/jani.catmother_02/my documents/projects/sg/dummy.cpp: uses 0.1%, 119188 bytes in 359 blocks, total 119188 bytes in 359 blocks
+INFO:    settings/jani.catmother_02/my documents/projects/sg/model.cpp: uses 0.1%, 93508 bytes in 758 blocks, total 4346166 bytes in 34921 blocks
+INFO:   ther_02/my documents/projects/gd/gd_dx_common/operator_new.cpp: uses 0.1%, 91836 bytes in 186 blocks, total 92876 bytes in 187 blocks
+INFO:   s/jani.catmother_02/my documents/projects/snd/soundmanager.cpp: uses 0.1%, 61512 bytes in 214 blocks, total 117004 bytes in 345 blocks
+INFO:   ttings/jani.catmother_02/my documents/projects/sg/material.cpp: uses 0.0%, 50120 bytes in 358 blocks, total 51380 bytes in 367 blocks
+INFO:   ni.catmother_02/my documents/projects/deadjustice/gamepath.cpp: uses 0.0%, 47056 bytes in 173 blocks, total 47056 bytes in 173 blocks
+INFO:   r_02/my documents/projects/deadjustice/physicalcombatcombo.cpp: uses 0.0%, 46656 bytes in 36 blocks, total 46656 bytes in 36 blocks
+INFO:   gs/jani.catmother_02/my documents/projects/util/properties.cpp: uses 0.0%, 36792 bytes in 21 blocks, total 66048 bytes in 54 blocks
+INFO:   gs/jani.catmother_02/my documents/projects/snd/soundloader.cpp: uses 0.0%, 32528 bytes in 66 blocks, total 55732 bytes in 239 blocks
+INFO:   ocuments/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9primitive: uses 0.0%, 30336 bytes in 316 blocks, total 30336 bytes in 316 blocks
+INFO:   atmother_02/my documents/projects/sg/internal/texturecache.cpp: uses 0.0%, 29600 bytes in 56 blocks, total 63084 bytes in 300 blocks
+INFO:   jani.catmother_02/my documents/projects/sgu/modelfilecache.cpp: uses 0.0%, 28816 bytes in 125 blocks, total 54156 bytes in 162 blocks
+INFO:   y documents/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9effect: uses 0.0%, 27136 bytes in 424 blocks, total 27136 bytes in 424 blocks
+INFO:   ani.catmother_02/my documents/projects/deadjustice/blender.cpp: uses 0.0%, 25552 bytes in 197 blocks, total 25712 bytes in 199 blocks
+INFO:   tings/jani.catmother_02/my documents/projects/sg/spotlight.cpp: uses 0.0%, 25192 bytes in 67 blocks, total 30080 bytes in 80 blocks
+INFO:   settings/jani.catmother_02/my documents/projects/snd/sound.cpp: uses 0.0%, 22968 bytes in 66 blocks, total 28884 bytes in 83 blocks
+INFO:   atmother_02/my documents/projects/sd/sd_dx8/dx8sounddriver.cpp: uses 0.0%, 20148 bytes in 123 blocks, total 22936 bytes in 140 blocks
+INFO:    documents/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9texture: uses 0.0%, 17020 bytes in 185 blocks, total 17020 bytes in 185 blocks
+INFO:   s/jani.catmother_02/my documents/projects/sgu/scenemanager.cpp: uses 0.0%, 15532 bytes in 34 blocks, total 26752 bytes in 51 blocks
+INFO:   catmother_02/my documents/projects/deadjustice/gamebsptree.cpp: uses 0.0%, 14608 bytes in 61 blocks, total 16608 bytes in 66 blocks
+INFO:   d settings/jani.catmother_02/my documents/projects/sg/font.cpp: uses 0.0%, 12680 bytes in 5 blocks, total 29304 bytes in 12 blocks
+INFO:   atmother_02/my documents/projects/ps/particlesystemmanager.cpp: uses 0.0%, 10472 bytes in 12 blocks, total 12456 bytes in 16 blocks
+INFO:   .catmother_02/my documents/projects/deadjustice/gamecamera.cpp: uses 0.0%, 10360 bytes in 21 blocks, total 10360 bytes in 21 blocks
+INFO:   s/jani.catmother_02/my documents/projects/deadjustice/game.cpp: uses 0.0%, 9872 bytes in 21 blocks, total 9952 bytes in 22 blocks
+INFO:    settings/jani.catmother_02/my documents/projects/sg/scene.cpp: uses 0.0%, 8528 bytes in 26 blocks, total 8528 bytes in 26 blocks
+INFO:   ings/jani.catmother_02/my documents/projects/sg/pointlight.cpp: uses 0.0%, 6624 bytes in 18 blocks, total 6624 bytes in 18 blocks
+INFO:   ngs/jani.catmother_02/my documents/projects/sg/morphtarget.cpp: uses 0.0%, 5456 bytes in 5 blocks, total 10416 bytes in 19 blocks
+INFO:   atmother_02/my documents/projects/id/id_dx8/dx8inputdriver.cpp: uses 0.0%, 4872 bytes in 12 blocks, total 4872 bytes in 12 blocks
+INFO:   her_02/my documents/projects/deadjustice/gamedynamicobject.cpp: uses 0.0%, 3776 bytes in 59 blocks, total 3776 bytes in 59 blocks
+INFO:   jani.catmother_02/my documents/projects/music/musicmanager.cpp: uses 0.0%, 3656 bytes in 3 blocks, total 3656 bytes in 3 blocks
+INFO:   ttings/jani.catmother_02/my documents/projects/lang/object.cpp: uses 0.0%, 3624 bytes in 10 blocks, total 6006232 bytes in 390 blocks
+INFO:   nd settings/jani.catmother_02/my documents/projects/sg/lod.cpp: uses 0.0%, 3536 bytes in 26 blocks, total 3536 bytes in 26 blocks
+INFO:   mother_02/my documents/projects/deadjustice/gamecontroller.cpp: uses 0.0%, 2784 bytes in 6 blocks, total 2784 bytes in 6 blocks
+INFO:   nts/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9graphicsdevice: uses 0.0%, 2700 bytes in 1 blocks, total 2700 bytes in 1 blocks
+INFO:   other_02/my documents/projects/deadjustice/computercontrol.cpp: uses 0.0%, 2340 bytes in 13 blocks, total 2340 bytes in 13 blocks
+INFO:   ttings/jani.catmother_02/my documents/projects/sg/linelist.cpp: uses 0.0%, 1540 bytes in 11 blocks, total 2044 bytes in 20 blocks
+INFO:   settings/jani.catmother_02/my documents/projects/sg/camera.cpp: uses 0.0%, 1128 bytes in 3 blocks, total 10688 bytes in 19 blocks
+INFO:   .catmother_02/my documents/projects/deadjustice/controlset.cpp: uses 0.0%, 1056 bytes in 2 blocks, total 11088 bytes in 21 blocks
+INFO:   .catmother_02/my documents/projects/deadjustice/gameobject.cpp: uses 0.0%, 1040 bytes in 1 blocks, total 1984 bytes in 4 blocks
+INFO:   gs/jani.catmother_02/my documents/projects/sg/trianglelist.cpp: uses 0.0%, 1036 bytes in 7 blocks, total 1036 bytes in 7 blocks
+INFO:   s/jani.catmother_02/my documents/projects/fsm/statemachine.cpp: uses 0.0%, 960 bytes in 12 blocks, total 960 bytes in 12 blocks
+INFO:   ettings/jani.catmother_02/my documents/projects/sg/morpher.cpp: uses 0.0%, 852 bytes in 6 blocks, total 852 bytes in 6 blocks
+INFO:   ni.catmother_02/my documents/projects/deadjustice/gamecell.cpp: uses 0.0%, 704 bytes in 6 blocks, total 1008 bytes in 9 blocks
+INFO:   ttings/jani.catmother_02/my documents/projects/dev/profile.cpp: uses 0.0%, 600 bytes in 6 blocks, total 600 bytes in 6 blocks
+INFO:   tmother_02/my documents/projects/deadjustice/overlaybitmap.cpp: uses 0.0%, 556 bytes in 4 blocks, total 556 bytes in 4 blocks
+INFO:   .catmother_02/my documents/projects/deadjustice/gamewindow.cpp: uses 0.0%, 428 bytes in 8 blocks, total 428 bytes in 8 blocks
+INFO:   mother_02/my documents/projects/deadjustice/overlaydisplay.cpp: uses 0.0%, 400 bytes in 2 blocks, total 400 bytes in 2 blocks
+INFO:   settings/jani.catmother_02/my documents/projects/sg/sprite.cpp: uses 0.0%, 376 bytes in 4 blocks, total 376 bytes in 4 blocks
+INFO:   ngs/jani.catmother_02/my documents/projects/sg/directlight.cpp: uses 0.0%, 352 bytes in 1 blocks, total 352 bytes in 1 blocks
+INFO:   uments/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9cubetexture: uses 0.0%, 276 bytes in 3 blocks, total 276 bytes in 3 blocks
+INFO:   s/jani.catmother_02/my documents/projects/deadjustice/main.cpp: uses 0.0%, 272 bytes in 3 blocks, total 272 bytes in 3 blocks
+INFO:   er_02/my documents/projects/io/directoryinputstreamarchive.cpp: uses 0.0%, 260 bytes in 2 blocks, total 34020 bytes in 1057 blocks
+INFO:   atmother_02/my documents/projects/id/id_dx8/dx8inputdevice.cpp: uses 0.0%, 256 bytes in 8 blocks, total 256 bytes in 8 blocks
+INFO:   mother_02/my documents/projects/deadjustice/morphanimation.cpp: uses 0.0%, 240 bytes in 3 blocks, total 240 bytes in 3 blocks
+INFO:   jani.catmother_02/my documents/projects/io/fileinputstream.cpp: uses 0.0%, 224 bytes in 2 blocks, total 125328 bytes in 1119 blocks
+INFO:   catmother_02/my documents/projects/lang/dynamiclinklibrary.cpp: uses 0.0%, 96 bytes in 3 blocks, total 96 bytes in 3 blocks
+INFO:   s/jani.catmother_02/my documents/projects/id/id_dx8/id_dx8.cpp: uses 0.0%, 80 bytes in 1 blocks, total 80 bytes in 1 blocks
+INFO:   ettings/jani.catmother_02/my documents/projects/sg/context.cpp: uses 0.0%, 52 bytes in 1 blocks, total 52 bytes in 1 blocks
+INFO:   s/jani.catmother_02/my documents/projects/gd/gd_dx9/gd_dx9.cpp: uses 0.0%, 24 bytes in 1 blocks, total 24 bytes in 1 blocks
+INFO:   s/jani.catmother_02/my documents/projects/sd/sd_dx8/sd_dx8.cpp: uses 0.0%, 24 bytes in 1 blocks, total 24 bytes in 1 blocks
+INFO:   ani.catmother_02/my documents/projects/sg/polygonadjacency.cpp: uses 0.0%, 0 bytes in 0 blocks, total 0 bytes in 0 blocks
+INFO:   mother_02/my documents/projects/deadjustice/gamescriptable.cpp: uses 0.0%, 0 bytes in 0 blocks, total 144 bytes in 1 blocks
+INFO:   ther_02/my documents/projects/deadjustice/gamenoisemanager.cpp: uses 0.0%, 0 bytes in 0 blocks, total 0 bytes in 0 blocks
+INFO:   her_02/my documents/projects/deadjustice/projectilemanager.cpp: uses 0.0%, 0 bytes in 0 blocks, total 0 bytes in 0 blocks

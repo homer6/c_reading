@@ -1,0 +1,155 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "io"=..\io\io.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "lang"=..\lang\lang.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "math"=..\math\math.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "playsnd"=.\playsnd\playsnd.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name io
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name lang
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name math
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sd
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sd_dx8
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sg
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name snd
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name win
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sd"=..\sd\sd.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "sd_dx8"=..\sd\sd_dx8\sd_dx8.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+    Begin Project Dependency
+    Project_Dep_Name math
+    End Project Dependency
+    Begin Project Dependency
+    Project_Dep_Name sd
+    End Project Dependency
+}}}
+
+###############################################################################
+
+Project: "sg"=..\sg\sg.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "snd"=.\snd.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "win"=..\win\win.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

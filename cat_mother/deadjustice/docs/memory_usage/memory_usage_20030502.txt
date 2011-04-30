@@ -1,0 +1,92 @@
+Memory state: Total 73563823 bytes in 108294 blocks
+  ttings/jani/my documents/projects/sd/sd_dx8/dx8soundbuffer.cpp: uses 20.0%, 14688997 bytes in 210 blocks, total 14688997 bytes in 210 blocks
+  nts and settings/jani/my documents/projects/bsp/bspstorage.cpp: uses 18.8%, 13814888 bytes in 259 blocks, total 13814888 bytes in 259 blocks
+  settings/jani/my documents/projects/gd/gd_dx9/dx9primitive.cpp: uses 18.0%, 13231524 bytes in 737 blocks, total 13429696 bytes in 755 blocks
+  nd settings/jani/my documents/projects/external/lua/src/lmem.c: uses 8.9%, 6528558 bytes in 57729 blocks, total 13070293 bytes in 95372 blocks
+  ocuments and settings/jani/my documents/projects/sg/effect.cpp: uses 7.4%, 5433984 bytes in 2249 blocks, total 7185612 bytes in 3188 blocks
+  tings/jani/my documents/projects/deadjustice/gamecharacter.cpp: uses 7.2%, 5281864 bytes in 7103 blocks, total 17602360 bytes in 24091 blocks
+  ents and settings/jani/my documents/projects/sgu/scenefile.cpp: uses 3.4%, 2490344 bytes in 8895 blocks, total 6861656 bytes in 34671 blocks
+  /documents and settings/jani/my documents/projects/sg/node.cpp: uses 3.0%, 2197196 bytes in 9475 blocks, total 2349080 bytes in 10105 blocks
+  s/jani/my documents/projects/deadjustice/movementanimation.cpp: uses 2.7%, 1991640 bytes in 798 blocks, total 2307392 bytes in 928 blocks
+   and settings/jani/my documents/projects/anim/interpolator.cpp: uses 2.1%, 1510400 bytes in 6198 blocks, total 6783968 bytes in 61131 blocks
+  s and settings/jani/my documents/projects/sgu/nodegroupset.cpp: uses 1.6%, 1213136 bytes in 846 blocks, total 2306444 bytes in 2625 blocks
+  uments and settings/jani/my documents/projects/pix/surface.cpp: uses 1.4%, 1055808 bytes in 216 blocks, total 173358556 bytes in 7135 blocks
+  /documents and settings/jani/my documents/projects/sg/mesh.cpp: uses 1.0%, 755036 bytes in 1599 blocks, total 1025468 bytes in 2137 blocks
+  documents/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9material: uses 0.8%, 574904 bytes in 517 blocks, total 820656 bytes in 738 blocks
+  uments and settings/jani/my documents/projects/lang/string.cpp: uses 0.4%, 283600 bytes in 1559 blocks, total 12020128 bytes in 51618 blocks
+  ents and settings/jani/my documents/projects/sgu/modelfile.cpp: uses 0.4%, 260540 bytes in 1806 blocks, total 261628 bytes in 1816 blocks
+  settings/jani/my documents/projects/deadjustice/gameobject.cpp: uses 0.3%, 187848 bytes in 503 blocks, total 193824 bytes in 521 blocks
+   settings/jani/my documents/projects/deadjustice/gamelevel.cpp: uses 0.2%, 169360 bytes in 339 blocks, total 186092 bytes in 361 blocks
+  settings/jani/my documents/projects/id/id_dx8/operator_new.cpp: uses 0.2%, 157172 bytes in 12 blocks, total 312660 bytes in 23 blocks
+  s/jani/my documents/projects/deadjustice/projectilemanager.cpp: uses 0.2%, 152240 bytes in 221 blocks, total 153296 bytes in 230 blocks
+  documents and settings/jani/my documents/projects/sg/dummy.cpp: uses 0.2%, 141636 bytes in 407 blocks, total 217848 bytes in 626 blocks
+  documents and settings/jani/my documents/projects/sg/model.cpp: uses 0.2%, 132024 bytes in 999 blocks, total 5333144 bytes in 37868 blocks
+   and settings/jani/my documents/projects/ps/particlesystem.cpp: uses 0.2%, 119552 bytes in 428 blocks, total 143904 bytes in 521 blocks
+  ettings/jani/my documents/projects/ps/spriteparticlesystem.cpp: uses 0.1%, 105512 bytes in 512 blocks, total 120056 bytes in 636 blocks
+  s and settings/jani/my documents/projects/snd/soundmanager.cpp: uses 0.1%, 92980 bytes in 275 blocks, total 181448 bytes in 462 blocks
+  ts and settings/jani/my documents/projects/snd/soundloader.cpp: uses 0.1%, 65120 bytes in 132 blocks, total 107876 bytes in 347 blocks
+  y documents/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9effect: uses 0.1%, 63920 bytes in 799 blocks, total 88960 bytes in 1112 blocks
+  d settings/jani/my documents/projects/deadjustice/gamepath.cpp: uses 0.1%, 57024 bytes in 198 blocks, total 57024 bytes in 198 blocks
+  cuments and settings/jani/my documents/projects/sg/morpher.cpp: uses 0.1%, 55648 bytes in 440 blocks, total 63088 bytes in 500 blocks
+  ttings/jani/my documents/projects/sg/internal/texturecache.cpp: uses 0.1%, 52924 bytes in 41 blocks, total 122364 bytes in 375 blocks
+  documents and settings/jani/my documents/projects/sg/scene.cpp: uses 0.1%, 50912 bytes in 148 blocks, total 51944 bytes in 151 blocks
+  ocuments/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9primitive: uses 0.1%, 46144 bytes in 412 blocks, total 46816 bytes in 418 blocks
+  uments and settings/jani/my documents/projects/sg/material.cpp: uses 0.1%, 42276 bytes in 271 blocks, total 76128 bytes in 488 blocks
+  s/jani/my documents/projects/deadjustice/gamedynamicobject.cpp: uses 0.1%, 38400 bytes in 128 blocks, total 39600 bytes in 132 blocks
+  /documents and settings/jani/my documents/projects/sg/font.cpp: uses 0.1%, 38152 bytes in 13 blocks, total 88360 bytes in 34 blocks
+  ts and settings/jani/my documents/projects/sg/shadowvolume.cpp: uses 0.1%, 37760 bytes in 16 blocks, total 44000 bytes in 20 blocks
+  and settings/jani/my documents/projects/sgu/modelfilecache.cpp: uses 0.1%, 37052 bytes in 209 blocks, total 62860 bytes in 245 blocks
+  ts and settings/jani/my documents/projects/util/properties.cpp: uses 0.0%, 33888 bytes in 30 blocks, total 55624 bytes in 53 blocks
+  ttings/jani/my documents/projects/sd/sd_dx8/dx8sounddriver.cpp: uses 0.0%, 33636 bytes in 187 blocks, total 35796 bytes in 199 blocks
+  gs/jani/my documents/projects/gd/gd_dx_common/operator_new.cpp: uses 0.0%, 32560 bytes in 6 blocks, total 46832 bytes in 9 blocks
+  nd settings/jani/my documents/projects/deadjustice/blender.cpp: uses 0.0%, 30528 bytes in 210 blocks, total 32704 bytes in 226 blocks
+  ocuments and settings/jani/my documents/projects/snd/sound.cpp: uses 0.0%, 29484 bytes in 81 blocks, total 33852 bytes in 93 blocks
+  s and settings/jani/my documents/projects/sgu/scenemanager.cpp: uses 0.0%, 26676 bytes in 26 blocks, total 54220 bytes in 76 blocks
+   documents/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9texture: uses 0.0%, 17680 bytes in 221 blocks, total 17680 bytes in 221 blocks
+  ttings/jani/my documents/projects/deadjustice/gameflareset.cpp: uses 0.0%, 17560 bytes in 66 blocks, total 19000 bytes in 71 blocks
+  ettings/jani/my documents/projects/deadjustice/gamebsptree.cpp: uses 0.0%, 16320 bytes in 66 blocks, total 17984 bytes in 70 blocks
+  settings/jani/my documents/projects/deadjustice/gamecamera.cpp: uses 0.0%, 14656 bytes in 28 blocks, total 16288 bytes in 37 blocks
+  ttings/jani/my documents/projects/ps/particlesystemmanager.cpp: uses 0.0%, 14176 bytes in 44 blocks, total 14624 bytes in 46 blocks
+  nts and settings/jani/my documents/projects/sg/morphtarget.cpp: uses 0.0%, 13408 bytes in 11 blocks, total 26112 bytes in 44 blocks
+  ngs/jani/my documents/projects/deadjustice/texturesequence.cpp: uses 0.0%, 13344 bytes in 106 blocks, total 13344 bytes in 106 blocks
+  s and settings/jani/my documents/projects/deadjustice/game.cpp: uses 0.0%, 12404 bytes in 21 blocks, total 12836 bytes in 25 blocks
+  nd settings/jani/my documents/projects/sg/polygonadjacency.cpp: uses 0.0%, 12224 bytes in 4 blocks, total 12224 bytes in 4 blocks
+  ings/jani/my documents/projects/deadjustice/gamescriptable.cpp: uses 0.0%, 11720 bytes in 73 blocks, total 19272 bytes in 81 blocks
+  ings/jani/my documents/projects/deadjustice/morphanimation.cpp: uses 0.0%, 6816 bytes in 71 blocks, total 7776 bytes in 81 blocks
+  ts and settings/jani/my documents/projects/sg/trianglelist.cpp: uses 0.0%, 6560 bytes in 40 blocks, total 6724 bytes in 41 blocks
+  ents and settings/jani/my documents/projects/sg/pointlight.cpp: uses 0.0%, 6528 bytes in 17 blocks, total 13056 bytes in 34 blocks
+  uments and settings/jani/my documents/projects/bsp/bspfile.cpp: uses 0.0%, 6384 bytes in 28 blocks, total 28624 bytes in 103 blocks
+  ttings/jani/my documents/projects/id/id_dx8/dx8inputdriver.cpp: uses 0.0%, 5064 bytes in 12 blocks, total 5064 bytes in 12 blocks
+  :/documents and settings/jani/my documents/projects/sg/lod.cpp: uses 0.0%, 4256 bytes in 28 blocks, total 4864 bytes in 32 blocks
+  uments and settings/jani/my documents/projects/lang/object.cpp: uses 0.0%, 3904 bytes in 10 blocks, total 6752936 bytes in 675 blocks
+  ettings/jani/my documents/projects/deadjustice/overlayfont.cpp: uses 0.0%, 3288 bytes in 4 blocks, total 3288 bytes in 4 blocks
+  uments and settings/jani/my documents/projects/sg/linelist.cpp: uses 0.0%, 3120 bytes in 20 blocks, total 5064 bytes in 47 blocks
+  uments and settings/jani/my documents/projects/dev/profile.cpp: uses 0.0%, 3040 bytes in 25 blocks, total 3136 bytes in 26 blocks
+  ings/jani/my documents/projects/deadjustice/gamecontroller.cpp: uses 0.0%, 2980 bytes in 6 blocks, total 2980 bytes in 6 blocks
+  ngs/jani/my documents/projects/deadjustice/computercontrol.cpp: uses 0.0%, 2744 bytes in 14 blocks, total 3136 bytes in 16 blocks
+  ments and settings/jani/my documents/projects/sg/spotlight.cpp: uses 0.0%, 2744 bytes in 7 blocks, total 5488 bytes in 14 blocks
+  nts/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9graphicsdevice: uses 0.0%, 2740 bytes in 1 blocks, total 2740 bytes in 1 blocks
+  nts and settings/jani/my documents/projects/sgu/shadowutil.cpp: uses 0.0%, 2460 bytes in 16 blocks, total 2780 bytes in 18 blocks
+  ts and settings/jani/my documents/projects/sg/shadowshader.cpp: uses 0.0%, 2340 bytes in 15 blocks, total 2652 bytes in 17 blocks
+  gs/jani/my documents/projects/deadjustice/gamenoisemanager.cpp: uses 0.0%, 1836 bytes in 5 blocks, total 1836 bytes in 5 blocks
+  gs/jani/my documents/projects/deadjustice/textureanimation.cpp: uses 0.0%, 1728 bytes in 18 blocks, total 1728 bytes in 18 blocks
+  s and settings/jani/my documents/projects/fsm/statemachine.cpp: uses 0.0%, 1248 bytes in 13 blocks, total 1248 bytes in 13 blocks
+  ings/jani/my documents/projects/deadjustice/overlaydisplay.cpp: uses 0.0%, 1248 bytes in 5 blocks, total 1248 bytes in 5 blocks
+  d settings/jani/my documents/projects/deadjustice/gamecell.cpp: uses 0.0%, 880 bytes in 9 blocks, total 976 bytes in 10 blocks
+  ings/jani/my documents/projects/deadjustice/gameboxtrigger.cpp: uses 0.0%, 792 bytes in 12 blocks, total 792 bytes in 12 blocks
+  ocuments and settings/jani/my documents/projects/sg/camera.cpp: uses 0.0%, 640 bytes in 2 blocks, total 1184 bytes in 5 blocks
+  tings/jani/my documents/projects/deadjustice/overlaybitmap.cpp: uses 0.0%, 620 bytes in 4 blocks, total 620 bytes in 4 blocks
+  settings/jani/my documents/projects/deadjustice/controlset.cpp: uses 0.0%, 544 bytes in 1 blocks, total 9792 bytes in 18 blocks
+  settings/jani/my documents/projects/deadjustice/gamewindow.cpp: uses 0.0%, 508 bytes in 7 blocks, total 508 bytes in 7 blocks
+  uments/projects/gd/gd_dx9/dx9graphicsdriver.cpp/dx9cubetexture: uses 0.0%, 432 bytes in 4 blocks, total 432 bytes in 4 blocks
+  nts and settings/jani/my documents/projects/sg/directlight.cpp: uses 0.0%, 368 bytes in 1 blocks, total 736 bytes in 2 blocks
+  s and settings/jani/my documents/projects/deadjustice/main.cpp: uses 0.0%, 324 bytes in 3 blocks, total 324 bytes in 3 blocks
+  /jani/my documents/projects/io/directoryinputstreamarchive.cpp: uses 0.0%, 292 bytes in 2 blocks, total 84436 bytes in 1755 blocks
+  and settings/jani/my documents/projects/io/fileinputstream.cpp: uses 0.0%, 256 bytes in 2 blocks, total 224640 bytes in 1755 blocks
+  ocuments and settings/jani/my documents/projects/sg/sprite.cpp: uses 0.0%, 220 bytes in 2 blocks, total 440 bytes in 4 blocks
+  ttings/jani/my documents/projects/id/id_dx8/dx8inputdevice.cpp: uses 0.0%, 192 bytes in 4 blocks, total 192 bytes in 4 blocks
+  ettings/jani/my documents/projects/lang/dynamiclinklibrary.cpp: uses 0.0%, 144 bytes in 3 blocks, total 144 bytes in 3 blocks
+  s and settings/jani/my documents/projects/id/id_dx8/id_dx8.cpp: uses 0.0%, 96 bytes in 1 blocks, total 96 bytes in 1 blocks
+  cuments and settings/jani/my documents/projects/sg/context.cpp: uses 0.0%, 68 bytes in 1 blocks, total 68 bytes in 1 blocks
+  s and settings/jani/my documents/projects/gd/gd_dx9/gd_dx9.cpp: uses 0.0%, 40 bytes in 1 blocks, total 40 bytes in 1 blocks
+  s and settings/jani/my documents/projects/sd/sd_dx8/sd_dx8.cpp: uses 0.0%, 40 bytes in 1 blocks, total 40 bytes in 1 blocks

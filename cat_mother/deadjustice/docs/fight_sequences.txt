@@ -1,0 +1,82 @@
+Fight Sequences
+---------------
+
+To create an empty sequence, call level:createFightSequence() which returns a new sequence object. 
+Call it's functions to set behavior. All functions except setEndBehavior have "start" & "end" parameters.
+
+
+Functions
+---------
+
+-- Wait, stand where you are
+--  No parameters
+
+sequence:addWait( start, end )
+
+-- Shoot/stop shooting at current target if target visible
+--  state = true / false
+
+sequence:addShoot( start, end, state )
+
+-- Shoot once at current target if target visible
+
+sequence:addShootOnce( start, end )
+
+-- Shoot at current target for n secs if target visible
+--  duration = how long to keep shooting
+
+sequence:addShootAuto( start, end, duration )	
+
+-- Shoot blindly even if target not visible
+--  duration = how long to keep shooting
+
+sequence:addShootBlind( start, end, duration )
+
+-- Crouch or uncrouch
+--  state = true = crouch or false = uncrouch ( true = not nil or false = nil )
+
+sequence:addCrouch( start, end, state )
+
+-- Move to offset, keep moving until destination reached or new destination set
+--  x, y, z = relative position in world space
+
+sequence:addMove( start, end, x, y, z )
+
+-- Move to absolute position, keep moving until destination reached or new destination set
+--  x, y, z = world space position
+
+sequence:addMoveAbsolute( start, end, x, y, z )
+
+-- Move to absolute position if hero not close, keep moving until destination reached or hero too close or new destination set
+--  x, y, z = world space position	
+--  heroCloseThreshold = distance whence hero is too close
+
+sequence:addMoveAbsolute( start, end, x, y, z, heroCloseThreshold )
+
+-- Move closer to current target
+--  amount = distance to move
+--  limit = minimum distance to keep to target
+
+sequence:addMoveCloser( start, end, amount, limit )
+
+-- Move further from current target
+--  amount = distance to move
+--  limit = maximum distance to  target
+
+sequence:addMoveFurther( start, end, amount, limit )
+
+-- Evade a randomized distance left or right
+--  amount = maximum distance
+
+sequence:addEvade( start, end, amount )
+
+-- Turn to face enemy
+
+sequence:addFaceEnemy( start, end )
+
+-- Turn to direction of movement
+
+sequence:addTurnToMove( start, end )
+
+
+

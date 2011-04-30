@@ -1,0 +1,49 @@
+(- Render To Texture -> General Settings -> Clear Unwrappers, Clear Shell Materials)
+
+- Before modelling or after baking (=render to texture), change the system units to Metric -> 1 meter 
+  and check (measure) your geometry scale, as .sg export handles incoming units as meters! 
+  The Radiosity calculation seems to work only when metric units are in use.
+
+- If you want to compress light maps in export, place "nvdxt.exe" in PATH of the system.
+
+- Setting up extended material parameters :
+  Open Customize -> Preferences -> Advanced Lightning
+  Material Editor -> Display Reflectance & Transmittance Information -> on
+
+- On first time when run : 
+  Select one object
+  Render To Texture -> Selected Object Settings
+  Add one lighting map
+  Set filename -> change to .tga and disable RLE compression before saving.
+  ( You must do this, since the compression tool fails to load 3dsmax generated .jpg files! )
+  Remove the lighting map
+
+- Select All Objects
+
+- Advanced Lighting -> Reset All
+  Initial quality -> 98% or more 
+
+- Advanced Lighting -> Start
+  When solution quality reaches initial quality is reached, 
+  set Refine iterations for all objects to 10-50 iterations and press Start again.
+  Refining the solution lessens radiosity noise by repositioning vertices, 
+  but after refining the solution, lighting calculation cannot be continued any more!
+
+- Always do your texture baking fresh from the previous stage, if you rebake an already baked
+  scene, the lightmaps will lose contrast!
+
+- Render To Textures -> General Settings:
+  Create Baked Materials -> StdMtl.SaveAll
+  File Output Path -> ...
+  Nearest Power of 2 on
+  
+- Render To Textures -> Selected Object Settings -> Generated Texture Elements:
+  Add LightingMap
+  Use Channel 2
+  Edge Padding 15 
+
+- Render To Textures -> Selected Object Settings -> LightingMap -> Selected Element Unique Settings
+  Shadows on/off
+  Direct Light on/off
+  Indirect Light on
+  

@@ -1,0 +1,48 @@
+LocalSpace 1
+	# LocalSpace 1 -- emits particles relative to object
+	# LocalSpace 0 -- emits particles relative to world
+
+EmissionRate 100
+	# particles / sec
+
+EmissionTime 0.1
+	# sec until emission stops
+
+SystemLifeTime 1e6
+	# sec until system is removed
+
+ParticleLifeTime 1e6
+	# sec until particle is removed
+
+MaxParticles 1
+	# max number of simultaneous particles
+
+Gravity 0
+	# m2/s
+
+VelocitySphere 0 0 0 0
+	# volume/set of possible particle initial velocities:
+	# VelocitySphere x y z radius
+	# VelocityBox minx miny minz maxx maxy maxz
+
+PositionSphere 0 0 0 0
+	# volume where particles are born:
+	# PositionSphere x y z radius
+	# PositionBox minx miny minz maxx maxy maxz
+
+Kill NOTHING
+	# NOTHING, RANDOM, OLDEST
+
+Image images/flare_lightbeam1.jpg
+	# ImageAnim <file> <rows> <columns> <total frames> <fps> <behaviour = RANDOM, LIFE, LOOP, MIRROR>
+
+Size 2 2
+	# Size min max
+	# random size in range min-max
+
+Angle 0 0
+	# Angle <min deg> <max deg>
+	# random angle in range min-max
+
+AngleSpeed 0 0
+	# AngleSpeed <min deg/s> <max deg/s>

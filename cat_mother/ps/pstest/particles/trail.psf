@@ -1,0 +1,14 @@
+LocalSpace 0
+EmissionRate 100
+SystemLifeTime 1
+EmissionTime 2.0
+ParticleLifeTime 0.9
+MaxParticles 50
+VelocitySphere 0 0 0 0
+PositionBox 0 0 0 0 0 0
+Gravity 3
+Kill OLDEST
+ImageAnim images/trail1_fade.tga 2 2 4 0 LIFE
+
+Size 0.5 0.5
+BoundSphere 2

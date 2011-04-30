@@ -1,0 +1,13 @@
+2002/9/7
+- added to lgc.c:
+  LUA_API void lua_gc( lua_State *L ) {luaC_collectgarbage(L);} 
+  and to lua.h:
+  LUA_API void  lua_gc (lua_State *L);
+  
+2002/02/10
+- added debug mem usage (mem/ lib)
+
+2002/02/09
+- created MSVC6 project files
+- LUA_DEBUG -> _DEBUG
+- double -> float

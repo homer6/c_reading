@@ -1,0 +1,18 @@
+Movement animation notes :
+--------------------------
+
+- See also "docs/movement_animation.sxd"
+- Parameters implemented in MovementAnimation class, which returns animations + parameters by input parameter(s)
+- All animation parameters used in GameCharacter animation blending are in a single struct which is accessed and set by MovementAnimation helper class
+- GameCharacter hosts an array of MovementAnimation helpers, one for each type of movement, for example "walking&running", "crouching", "crawling", "jumping" with type of movement selected by primary state
+- MovementAnimation is constructed from names of animations, count of sectors, curve types, curvatures and levels (multiple) of animations with pointers to parameters affecting blending and tresholds for vector length and varispeed bases respectively
+- MovementAnimation is only applied to primary animation, secondary is implemented by GameCharacter
+- Blend points are implemented in both MovementAnimation and GameCharacter to disencourage blending between movement animations
+- GameCharacter implements blending "fade-in" of movement animations when required, briefly bypassing animation 2 returned by MovementAnimation if necessary.
+- Interface to movement animation setup is scriptable for easy tuning with run-time recompile
+
+Other notes :
+-------------
+
+- (optional) To fake cross-stepping when strafing, wobble movement vector when strafing
+- Hard switch between sneak/walk/run

@@ -1,0 +1,405 @@
+sgviewer Build 100
+
+
+Overview
+--------
+
+sgviewer is a real-time renderer of .sg 3D scene files.
+
+
+Install
+-------
+
+Just copy the files in this package to some empty directory, 
+for example c:\sgviewer, and start the application.
+ALT+F4 quits. Now you can view sg files by double-clicking them.
+
+
+Configuration
+-------------
+
+Rendering options can be changed from text file sgviewer.prop.
+sgviewer.prop is in the same directory as sgviewer.exe.
+Properties can be reset by deleting the file -- when you
+next time start the sgviewer, a new property file is created.
+Property file location is updated by starting the viewer without 
+document.
+
+Settings in sgviewer.prop:
+Back                Back plane distance (or 0 if automatic)
+BitsPerPixel        Bit depth of the rendering window (or 0 for desktop mode)
+Front               Front plane distance (or 0 if automatic)
+HWTnL               Use hardware T&L
+Height              Height of the rendering window
+MaxDebugLines       Maximum number of debug lines to draw in one frame
+MovementSpeed<X>    Movement speed (km/h) when key <X> is pressed
+Profiling           Toggle code profiling statistics on/off
+RefRasterizer       Use software reference rasterizer
+Refresh             Refresh rate in Hz (fullscreen modes only)
+RotationSpeed<X>    Rotation speed (deg/s) when key <X> is pressed
+Statistics          Toggle statistics (0==off, 1==on)
+StencilEnabled      Stencil buffer toggle (0==off, 1==on)
+Width               Width of the rendering window
+
+
+Shadows
+-------
+
+If a scene contains directional light named 'keylight',
+then shadows are added to the scene.
+
+
+Material Name Tags
+------------------
+
+(note: case-sensitive, as everything else)
+
+SORT                enable sorting for this material
+
+
+Statistics
+----------
+
+By pressing T you can toggle statistics display. Statistics can slow
+down rendering a bit.
+
+Displayed statistics:
+front/back          Camera front / back plane distance
+shadow tri          Number of shadow triangles rendered
+tri                 Total number of triangles rendered / in scene
+obj X / Y           Number of objects rendered / processed
+lts X               Number of lights rendered
+pri X               Number of primitives (triangle batches) rendered
+tri X               Number of triangles rendered
+fps X               Frames per second
+
+
+Keys
+----
+
+ALT+F4              quit
+ESC                 quit
+PAUSE/BREAK         pause
+R                   reset
+T                   toggle statistics
+G                   grab screen (Shot01.jpg, Shot02.jpg, ...)
+M                   increase ambient color
+SHIFT+M             decrease ambient color
+DEL                 delete object under mouse cursor
+L                   slow motion
+B                   rewind
+I                   toggle object info / bounding volume visualization
+P                   update default light position
+
+W,A,S,D             fly camera forward, left, backward, right
+SHIFT + UP,DOWN     fly camera up, down
+SHIFT + LEFT,RIGHT  fly camera left, right
+LEFT,RIGHT          turn camera left, right
+UP,DOWN             turn camera up, down
+1,2,3,4             fly camera speeds (see sgviewer.prop)
+                    (default movement is 100km/h and rotation 50 degrees/s)
+
+
+Changes
+-------
+
+100:
+- changed SORT tag to modify also shader rendering order
+
+99:
+- sorting improvements
+- vertex normals no longer affected by tangent space generation
+
+98:
+- vertex normals always added to vertex format
+
+97:
+- fixed field of view usage
+- added run-time warning if pixels are not square
+
+96:
+- added bone and skin visualization (see prop)
+- added support hardware vertex shader processing
+
+95:
+- added check for too many texture coordinate layers
+
+94:
+- more error checks to shader parameter setting
+- more forgiving vertex tangent space generation
+- added real dummy object support
+
+93:
+- better prop path refresh: updated to current working directory if not found
+  from previous location or if sgviewer build number has changed since last start
+- added grab screen to F9
+- added error to debug out if shader uses bones but mesh has bones
+- added error to debug out if mesh has bones but shader doesn't use them
+
+92:
+- added support for matrix palette vertex shader skinning
+- fixed DDS loading crash
+- added build number to debug output
+- added registry-based property path (set when sgviewer started without document)
+- added default light if the scene has no lights
+
+91:
+- added local space shader parameters
+- better shader parameter name matching
+- other shader related changes
+
+90:
+- added configurable rendering driver (prop/RenderingDriver)
+- fixed lightmap+alpha rendering
+
+89:
+- image / DDS loading fixes
+- changed temporarily back to gd_dx8 driver
+
+88:
+- added deferred effect initialization (double click scene file loading)
+- added dx9 support
+
+87:
+- initial shader effect file support
+
+86:
+- added light map support
+- added DDS support
+- added texture compression support
+
+85:
+- changed interpolation back to Catmull-Rom
+
+84:
+- fixed task switch & fog bug
+- changed to use linear key frame interpolation
+
+83:
+- added (tex+env)*diffuse multipass emulation
+- added (tex+masked env)*diffuse multipass emulation
+
+82:
+- added abstract texture layers support
+
+81:
+- enhanced LOD support (multiple dependent meshes can have 
+  same LOD level without being in the same hierarchy)
+
+80:
+- bugfix: ambient was added twice to statically lit vertices
+
+79:
+- added support for skinned alpha polygon sorting
+
+78:
+- added support for renderable flag
+
+77:
+- added morpher support
+
+68:
+- mipmap support
+- changed pause key from P to pause/break
+- added small offset to shadow rendering (helps character shadows)
+
+51:
+- changed versioning to use build numbers
+
+5.4:
+- fixed shadow volume capping
+- added support for disabled nodes
+- static shadows file format changed
+
+5.3:
+- added mipmap support
+- added mipmap config to props (MipMapFilter and MipMapLODBias)
+- fixed one crash bug in shadow volume creation
+- added Z-bias support (to avoid shadow Z-fighting)
+
+5.2:
+- added large mesh splitting (settings in sgviewer.prop)
+- new shadow volumes
+
+5.1:
+- re-enabled shadow volume clipping
+
+5.0:
+- fixed wrong gd driver version error handling
+- better camera front / back plane calculation
+- better texture pixel format validation
+- some alpha rendering optimizations
+- shadow skinning optimization
+- changed object level sorting to take bounding sphere into account
+
+4.9:
+- optimizations to animation system 
+  (single key anim skip, unit scale speed up, faster index/vertex access)
+- changed transparent polygons to be rendered before shadows
+
+4.8:
+- shadow polygon counts to total and object info (I)
+- added Profiling toggle to props (to hide some 'coder statistics')
+- source level memory usage statistics (debug build only)
+- some memory usage optimizations
+
+4.7:
+- added bounding volume visualization toggle (I)
+- added MaxDebugLines to props
+- added data preload
+- added lod diameter info (I)
+- added Textures16bit and HalfTextureResolution props
+
+4.6:
+- fixed bug in bounding box computation
+
+4.5:
+- animation system and data format changes
+
+4.4:
+- smaller threshold for dynamic shadow edge detection
+
+4.3:
+- fixed index buffer reallocation bug
+- new debug output (no text files anymore)
+- added dithering to image color conversions
+
+4.2:
+- removed ShadowLength from props (not used anymore)
+- removed d3d utility lib usage from d3d driver 
+- internal changes to d3d driver
+- added slow motion (L) and rewind (B)
+
+4.1:
+- added lod counts to statistics
+- changed object pick stats so that shadow polygons are included
+
+4.0:
+- added polycount to object pick info
+- added scene poly/primitive counts
+- added support for name based LODs
+
+3.9:
+- fixed LOD shadows
+- fixed skinned object culling
+
+3.8:
+- added refresh rate to properties (affects fullscreen modes only)
+- added support for dynamic shadows
+- added support for skinned shadows
+
+3.7:
+- changed pause to not affect fly camera
+- added framerate filtering
+
+3.6:
+- changed polygon sorting to use midpoint
+
+3.5:
+- added transparent polygon sorting (for indexed triangles)
+
+3.4:
+- fixed bug in constant opacity usage
+
+3.3:
+- added static shadow loading
+- added movement/rotation speeds to props
+- added object delete by mouse (for debugging shadows)
+- better object drag and rotate by mouse (for debugging shadows)
+
+3.2:
+- added ambient color and self-illumination for unlit geometry
+
+3.1:
+- performance optimizations
+- added mouse cursor object name and distance (key I)
+- added ambient level control (keys M and SHIFT+M)
+- added optional Front/Back settings to properties
+- properties to abc order
+- fixed shadow computation bug (='statue bug')
+
+3.0:
+- added object mouse drag and rotate (to test bounding volume stuff)
+- fixed bug in vertex color loading
+
+2.9:
+- fixed texture cache bug which caused crash if image loading failed
+- setting ShadowLength to 0 disables shadows
+- added ambient loading
+
+2.8:
+- new shadows
+- fixed bug that crashed sgviewer if the graphics library driver 
+  was missing or invalid (font was loaded before the driver check)
+
+2.7:
+- added RefRasterizer toggle to properties
+- added ShadowLength to properties
+
+2.6:
+- added hardware and mixed vertex processing support
+- added HWTnL toggle to properties
+
+2.5:
+- added statistics on/off saving to property file
+- added new font system
+- internal d3d driver changes
+
+2.4:
+- added hierarchical level of detail support
+- added self illumination level support
+
+2.3:
+- added support for stored vertex normals
+- added some statistics to Debug.txt
+
+2.2:
+- fixed bug in shadow creation
+
+2.11:
+- re-enabled shadow caching
+
+2.1:
+- fixed inverse multiplicative alpha
+
+2.0:
+- added shadows
+
+1.8:
+- fixed win2k access violation when exiting after rendering device init error
+- fixed menu visibility in win2k fullscreen mode
+- added config file
+- added statistics
+- added esc key to exit
+
+1.7:
+- fixed fly camera fov
+- main window client area size to constant 640x480
+- added window activate/deactive tracking
+
+1.6:
+- fixed bug in cleanup (driver was released before texture cache)
+
+1.5:
+- added graphics engine driver version checking
+- some fly mode changes
+
+1.4:
+- added fly mode
+
+1.3:
+- added vertex color support
+
+1.2:
+- added support for n link blended vertex loading
+- both fullscreen and desktop window versions
+
+1.1:
+- changed to fullscreen only
+
+1.0:
+- the first version
+
+
+
+Copyright (C) 2002 Cat Mother, Ltd.

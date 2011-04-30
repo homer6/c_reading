@@ -1,0 +1,103 @@
+Scene Graph (.sg) File Format 1.22
+----------------------------------
+
+
+Overview
+--------
+
+Scene file contains 3D scene graph and animations.
+The file format is chunk-based, see geometry file format for details.
+
+
+Chunks
+------
+
+{1}scene 
+	<ver int=0x122>
+
+	{0,1}environment
+		{1}ambient <floats r g b>
+
+	{0,n}node 
+		{1}name <string>
+		{0,1}parent <parent index>
+		{0,1}target <target index>
+		{1}pos <anim>
+		{0,1}rotq <anim>	-- quaternions
+		{0,1}renderable <boolean>
+
+	{0,n}mesh 
+		[node]
+		{1}model <filename>
+		
+		{0,1}bones
+			<count=b>
+			for each bone
+				<node index> <4x4 rest transform>
+		
+		{0,1}staticshadow
+			<number of silhuette triangles>
+			for each silhuette triangle vertex
+				<floats x y z>
+			
+			<number of unlit triangles>
+			for each unlit triangle vertex
+				<floats x y z>
+
+			<shadow volume end cap plane, 4 floats, Nx Ny Nz -PdotN>
+			
+			{0,1}dir <floats x y z>		-- light direction in world space
+		
+		{0,1}dynamicshadow
+			<source geometry filename>
+			dir <floats x y z len>		-- light direction in world space
+
+	{0}light
+		[node]
+		{0,1}color <floats r g b>		-- default 1,1,1
+		{0,1}intensity <float>			-- default 1
+
+	{0,n}pointlight
+		[light]
+		{0,1}range <float>				-- default infinite
+		{0,1}atten <floats a0 a1 a2>	-- default none
+
+	{0,n}spotlight
+		[light]
+		{0,1}range <float>				-- default infinite
+		{0,1}atten <floats a0 a1 a2>	-- default none
+		{1}innercone <float>			-- radians
+		{1}outercone <float>			-- radians
+
+	{0,n}directlight
+		[light]
+
+	{0,n}camera
+		[node]
+		{1}fov <float>
+
+	{0,n}lod
+		[node]
+
+
+Changes
+-------
+
+1.22:
+- added light world direction to static shadow
+
+1.21:
+- end cap plane added to static shadow
+
+1.2:
+- key frame animation data format changed
+
+1.1:
+- added LOD-object to scene graph
+
+1.0:
+- initial version
+
+
+
+Copyright (C) Cat Mother, Ltd.

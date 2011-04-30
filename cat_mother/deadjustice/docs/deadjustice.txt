@@ -1,0 +1,1193 @@
+Dead Justice Demo Build 65
+
+
+Generic Controls
+----------------
+
+F               toggle fly camera
+T               toggle time slowdown
+F1-F6           select player camera
+F7              print rendered primitives to debug output
+SHIFT+F7        toggle manual frame advance
+O               advance frame if manual frame advance enabled
+F8              toggle arc ball camera
+F9              take a screenshot (disabled)
+F11             reset
+F12             toggle debug info
+PAUSE/BREAK     pause game
+SPACE           skip cut scene
+I               toggle invulnerability
+O               advance frame in Debug.ManualFrameAdvance mode
+
+
+Player Controls (Keyboard/Mouse)
+--------------------------------
+
+UP, DOWN        move forward / backwards
+MOUSE           crosshair / turning
+MOUSE LEFT      aiming / shooting
+MOUSE RIGHT     physical attack strike
+LEFT CONTROL    physical attack kick / skip cut scene
+W A S D         moving
+C               crouch
+Q E             peek left / right
+X               roll
+R               reload weapon
+TAB             cycle weapon
+Z               throw an empty shell
+LEFT SHIFT      sneak modifier
+CAPSLOCK        toggle run/walk
+
+
+Player Controls (PS2 Pad)
+-------------------------
+
+LEFT JOYSTICK   move
+RIGHT JOYSTICK  crosshair / turn
+R2              shoot
+L2              crouch
+L1              roll
+DIGITAL UP      cycle weapon
+DIG. LEFT/RIGHT peek left / right
+SQUARE          physical attack punch
+CROSS           physical attack kick / skip cut scene
+TRIANGLE        reload weapon
+R1              throw an empty shell
+
+
+Fly Camera Controls
+-------------------
+
+WASD+ARROWS     fly camera movement
+1-4             fly camera speed
+
+
+Weapon Properties
+-----------------
+
+Function fire is called from weapon script when weapon is fired.
+
+Attributes
+- Bullet                    Projectile Script file name
+- Empty shell               Projectile Script file name
+- Fire rate                 Amount of firings per second
+- Shell eject delay         Amount of time (seconds) after firing that the shell is ejected from the chamber
+- Shots per launch          Count of projectiles fired on each firing
+- Spread cone angle         Angle (degrees) of random spread on any firing
+- Recoil error per shot     Angle (degrees) of error per each firing
+- Recoil error correction   Amount of degrees that recoil error can be corrected in sec
+- Recoil error max          Maximum degrees of recoil error
+- Recoil error min          Minimum degrees of recoil error
+
+The nozzle flame particle is played at "Dummy_flame", 
+shells exit at "Dummy_shell_exit", in the direction of negative X 
+axis in MAX + a little random.
+
+
+Projectile Properties
+---------------------
+
+Attributes
+- Launch Velocity       Speed (m/s) which the projectile exits
+- Damage                Amount of damage the projectile causes
+- Damage area           Radius of damage on exploding projectiles
+- Age limit             Time (seconds) after which the projectile is automatically removed
+- Gravity               Amount of gravity affecting projectile (default = 0)
+- Keep on collision     Switch on to keep projectiles in scene after collision (default = false)
+- Align on Collision    Switch on to align projectiles to the collision normal (default = false)
+- Hit Character         Switch on to enable hitting characters (default = true)
+- Spin                  Quaternion which is the axis & amount the projectile spins in one sec (dafault is no spin)
+
+Function signalHitGeometry is called from projectile script when projectile hits a solid
+
+Empty shell models should have their pivot in the center and have Y-axis pointing "up" in MAX.
+
+
+Object Name Tags
+----------------
+
+(note: case-sensitive, as everything else)
+
+VISUAL          object is visual only and does not affect collisions
+COLLIDE         object is for collision checking only and not visible
+BACKGROUND      object is sky dome, see "Background Objects / Sky Domes"
+
+
+Material Name Tags
+------------------
+
+(note: case-sensitive, as everything else)
+
+SEETHRU         dual sided material, disable projectile and (AI) visibility check collisions for this material
+SORT            enable sorting for this material
+TYPE=<string>   collision material type (TYPE=METAL, TYPE=PLASTIC, TYPE=WOOD, TYPE=CONCRETE, etc.)
+
+
+Crosshair Configuration (PC)
+----------------------------
+
+See deadjustice.prop:
+
+Control.PC.MouseMaxCharacterTurnRate
+# Maximum character turning rate when using mouse (units = x times normal character turning rate)
+
+Control.PC.MousePitchSensitivity
+# Up-down mouse sensitivity. Scales Control.PC.MouseSensitivity in vertical direction.
+
+Control.PC.MouseTurnSensitivity
+# Left-right mouse sensitivity. Scales Control.PC.MouseSensitivity in horizontal direction.
+
+Control.PC.MousePeekPitchSpeed
+# Relative speed of camera pitch change when character starts peek.
+# Units are 1 / from-full-pitch-to-center, e.g. when speed=2 it takes 0.5 seconds from 
+# full pitch camera to return to center pitch
+
+
+Crosshair Configuration (PS2)
+-----------------------------
+
+See deadjustice.prop:
+
+Control.Crosshair.PS2.AnalogStickExponentialFuncWindowSize
+# Crosshair movement exponentiality amount, it represents the width of window to function y = 2^x
+# A value of 0 means linear, value of 1 is almost linear, value 2 is noticeably exponential.
+# The higher the value, the more accuracy in the center area and less accuracy on the edges.
+
+Control.Crosshair.PS2.AverageBufferSize
+# Sets amount of previous crosshair positions to use as averaging value to determine new crosshair position, 
+# Defines 'slowness' of crosshair.
+
+Control.Turning.PS2.OneOverXExponentialFuncWindowSize
+# Controls how quickly the character turns when crosshair is moved beyond the inner zone. 
+# It represents the width of window to function y = e^(1/(-x - 0.11)). 
+# Value of 0 is effectively linear, higher values are increasingly nonlinear. 
+# Higher values translate to more turning with smaller crosshair offsets.
+
+
+BSP Building Configuration
+--------------------------
+
+Debug.BSPBuildPolySkip controls how many polygons are skipped between each
+evaluation when trying to find optimal split plane in BSP tree construction.
+Debug.BSPBuildPolySkip = 0 results best BSP tree but takes longer time
+to construct. Value 4 is good for testing, results ok BSPs but doesn't
+take too long to construct one.
+
+
+NPC Path Shape Objects
+----------------------
+
+Path shape object can be set to non-player-characters to be used as a guard path.
+Guard path shapes must be parented to the cell where the path starts.
+Shape lines must follow approximately ground level.
+Initial look-at direction is direction from the first point to the second.
+
+
+NPC Position Dummy Objects
+--------------------------
+
+Non-player-characters can be created at dummy object position.
+Dummy objects must be parented to the cell where their center point is.
+Dummy object local X-axis defines initial look direction.
+
+
+NPC Hearing
+-----------
+
+NPC do not hear real sounds, they hear 'noises'. Noises have
+level, fade out start/end distances and fade out start/end times.
+Examples of noise sources are hero footsteps, shooting and exploding barrels.
+Noises draw NPC attention.
+
+Noises can be added to level by level:createNoise function:
+level:createNoise( <source object>, <noise level>, <fade out distance start>,
+    <fade out distance end>, <fade out time start>, <fade out time end> )
+
+
+Sound Playback
+--------------
+
+Sound listener is positioned 1 meter above character (feet) position.
+Sound listener rotation is same as character (capsule) rotation.
+
+Head bone is not used to avoid problems with for example rolling:
+As character head rotation changes sound playback is also affected,
+which is not desirable (althought 'correct') behaviour.
+
+
+Morph Animations
+----------------
+
+Morphers and morph targets are exported in separate .gm files.
+If for example Head2_n object contains morpher modifier then
+Head2_n.gm contains associated morpher animation.
+Same thing for morph targets: If Head2_mouth_open is a morph target
+then Head2_mouth_open.gm contains exported target.
+
+To use multiple different morpher animations with a single character,
+renamed morpher gm (exported Head2_n.gm of each morpher animation
+max file) to for example morpher_testgrin.gm and use it in
+a call to addMorpherAnimation (see hero.lua for example).
+You can also rename objects containing morphers already in the 3dsmax
+to get correct naming automatically, for example you can rename
+the head containing testgrin animation to morpher_testgrin before
+export and so correct name (morpher_testgrin.gm) gets exported.
+This way you can also keep all morpher animations of a single
+character in a single 3dsmax file.
+
+When exporting morpher animations you can keep only "Export geometry"
+checkbox checked to get only needed files (+saved export options, .opt)
+to export directory. When exporting morph targets you need also
+"Export morph targets" checkbox checked. If you keep all in a single
+3dsmax file then check both boxes when exporting.
+Note: It does not do any harm to keep also other checkboxes active,
+just too many (unused) files will be written.
+
+Morpher usage in script briefly (see hero.lua for details):
+1) Set object which is used as base model with setMorphBase().
+   Must be called after setMesh().
+2) Add all morph animations to the base model with
+   addMorphAnimation(). 
+3) Play added morph animations in response to state changes
+   or other script events with morph().
+
+
+AI Personality parameters
+-------------------------
+
+Personality of NPC characters is stored in ComputerControl object, which can be retrieved in script by calling
+getComputerControl() from the character table.
+ComputerControl table has 2 low-level personality parameters :
+
+cc:setAimDelay( time )
+cc:setAimInaccuracy( angle )
+
+setAimDelay sets time that needs to be elapsed before a new shot can be fired.
+setAimInaccuracy sets maximum angle of inaccuracy. 
+When shooting, NPC "rolls dice" to determine amount of actual inaccuracy which is something between no error the maximum angle.
+
+ComputerControl table also hosts 4 high-level personality parameters, which are assigned rather than called :
+
+cc.stupidity
+cc.aggressiveness
+cc.chicken
+cc.healthLowThreshold
+
+stupidity, range 0..1 is the probability of NPC reacting to an event, hearing, seeing, receiving bullets.
+aggressiveness, range 0..1 is the probability of NPC selecting aggression vs. evasion when re-evaluating its' state.
+chicken, range 0..1 is the probability of NPC selecting retreat vs. aggression when its' health is low
+healthLowThreshold, is the limit amount of health before NPC starts checking "chicken" parameter for retreating
+
+
+Head Turning Sequences
+----------------------
+
+Sequences of look-at angles with a time for each can be stacked as sequences to control NPC's view cone while
+in patrol or alert state.
+
+level:createHeadTurningSequence() creates and returns a new sequence table.
+
+sequence:addView( time, horizontal, vertical, changespeed ) adds a view to the sequence
+
+parameters:
+time,           seconds, time since the sequence was started
+horizontal,     angle in degrees, right is positive and left is negative
+vertical,       angle in degrees, down is positive and up is negative
+changespeed,    degrees / second, angle speed telling how quickly the last view changes to the new view
+
+
+NPC State Stack
+---------------
+
+ NPC behaviour is controlled by a stack of states. Only one state is active at any 
+given time. Evaluation of states starts from the bottom of the stack, the first state added.
+Every state in the state has an update function, update interval, enter and exit conditions 
+and initialization & deinitialization functions. 
+ On each update, the update function of the currently active state is called. Then 
+the enter condition of the next state ( one above current ) is evaluated. If this
+indicates that the next state should become active, the initialization function 
+for the next state is called and current state is updated. If the next state should
+not become active, the exit condition of the current state evaluated instead. Should
+it be true, the deinitialization function of the current state is called and current
+state is updated to the previous state ( one below current). 
+
+
+Patrol State
+------------
+
+call character:addPatrolState( pathname, headturningsequence ) to create a patrol state on top of the AI'state stack.
+
+pathname,               name of a path object in the scene. Shape or Dummy
+headturningsequence,    head turning sequence table
+
+addPatrolState returns a patrol state table.
+
+Patrol state table provides 2 additional methods :
+
+state:addHeadTurningSequence( sequence )
+state:addRandomSound( time, delay, probability )
+
+addHeadTurningSequence adds a new head turning sequence.
+addRandomSound adds a sound to be played every "delay" seconds at "probability" probability.
+
+Patrol state remains active at all times and will never exit.
+
+
+Alert State
+-----------
+
+call character:addAlertState( surprisedprobability, headturningsequence ) to create an alert state on top of the AI's state stack.
+
+surprisedprobability,   number in range 0..1, the probability of NPC uttering a sound when entering alert state for the first time
+headturningsequence,    head turning sequence table
+
+addAlertState returns an alert state table.
+
+alert state table has the following assignable member variables
+
+state.evadeEnabled
+state.evadeDelay
+state.alertLength
+state.enemyCloseThreshold
+
+evadeEnabled,           true(anything) or false(nil), enables or disables random evasive movement ( default : false )
+evadeDelay,             number, amount of seconds between evade movements ( default : 1.5 seconds )
+alertLength,            number, amount seconds before alert state should exit if enemy not near ( default : 20 seconds )
+enemyCloseThreshold,    number, amount of meters when enemy is considered too close for alert state not to exit ( default : 25 meters )
+turningAroundEnabled    turns around (walking) looking for player
+
+Alert state becomes active if NPC hears a sound or is hit by an attack
+Alert state exits if enemy is not close
+
+
+Fight State
+-----------
+
+call character:addFightState() to create a fighting state on top of the AI's state stack.
+
+When an NPC is in fight state, fight sequences are activated depending on the AI's personality parameters.
+Fight state table provides 3 methods for adding sequences:
+
+fs:addFightSequence( sequence )
+fs:addEvadeSequence( sequence )
+fs:addRetreatSequence( sequence )
+
+You can add multiple sequences per behavior. When NPC fight sequence ends, new behavior is evaluated and
+one of the sequences of that type is selected at random.
+
+To create an empty sequence, call level:createFightSequence() which returns a new sequence object. 
+The sequence table provides member functions to add behavior to sequence. 
+All functions have at least "start" & "end" parameters which refer to time since the sequence was started.
+
+Functions:
+
+-- Wait, stand where you are
+--  No parameters
+
+sequence:addWait( start, end )
+
+-- Shoot/stop shooting at current target if target visible
+--  state = true / false
+
+sequence:addShoot( start, end, state )
+
+-- Shoot once at current target if target visible
+
+sequence:addShootOnce( start, end )
+
+-- Shoot at current target for n secs if target visible
+--  duration = how long to keep shooting
+
+sequence:addShootAuto( start, end, duration )   
+
+-- Shoot blindly even if target not visible
+--  duration = how long to keep shooting
+
+sequence:addShootBlind( start, end, duration )
+
+-- Crouch or uncrouch
+--  state = true = crouch or false = uncrouch ( true = not nil or false = nil )
+
+sequence:addCrouch( start, end, state )
+
+-- Move to offset, keep moving until destination reached or new destination set
+--  x, y, z = relative position in world space
+
+sequence:addMove( start, end, x, y, z )
+
+-- Move to absolute position, keep moving until destination reached or new destination set
+--  x, y, z = world space position
+
+sequence:addMoveAbsolute( start, end, x, y, z )
+
+-- Move to absolute position if hero not close, keep moving until destination reached or hero too close or new destination set
+--  x, y, z = world space position  
+--  heroCloseThreshold = distance whence hero is too close
+
+sequence:addMoveAbsolute( start, end, x, y, z, heroCloseThreshold )
+
+-- Move closer to current target
+--  amount = distance to move
+--  limit = minimum distance to keep to target
+
+sequence:addMoveCloser( start, end, amount, limit )
+
+-- Move further from current target
+--  amount = distance to move
+--  limit = maximum distance to  target
+
+sequence:addMoveFurther( start, end, amount, limit )
+
+-- Evade a randomized distance left or right
+--  amount = maximum distance
+
+sequence:addEvade( start, end, amount )
+
+-- Turn to face enemy
+
+sequence:addFaceEnemy( start, end )
+
+-- Turn to direction of movement
+
+sequence:addTurnToMove( start, end )
+
+If no fight sequences are added, fight state defaults to a behavior whence it randomly evades and shoots at the player
+constantly. Assign the following member variable :
+
+state.evadedelay 
+
+with amount of seconds between evasive movements ( default 1.5 seconds )
+
+
+Hurt Animations
+---------------
+
+Hurst animations are divided to Projectile hurts & Physical hurts.
+
+Projectile hurts are:
+
+"hero_projectile_hurt_aiming_rifle"   - secondary anim used when aiming a rifle
+"hero_projectile_hurt_aiming_handgun" - secondary anim used when aiming a handgun
+"hero_projectile_hurt_aiming_shotgun" - secondary anim used when aiming a shotgun
+"hero_projectile_hurt"                - primary anim used when standing/walking/running 
+"hero_projectile_hurt_crouching"      - primary anim used when crouching
+
+If aiming, upper body hurt is selected by weapon. If not, primary animation supplies 
+movement data to all bones.
+
+Physical hurts are:
+
+"hero_physical_hurt_front"       - primary anim used when hit from front
+"hero_physical_hurt_right"       - primary anim used when hit from right
+"hero_physical_hurt_back"        - primary anim used when hit from back
+"hero_physical_hurt_left"        - primary anim used when hit from left
+
+Hurt anims always play to completion, only the character's death will override the state. 
+Rolling prevents hurt anim playback, although hurt state still becomes active.
+
+
+NPC Sounds 
+----------
+
+NPC's emit sounds at certain events :
+ 
+Random idle sounds : In patrol and idle state, if added
+Surprised sound :    Entering alert state. Different sound is played whether the NPC saw or heard the hero.
+Hit sound :          Projectiles or physical attacks hit.
+Taunt sound :        As NPC's physical attack hits hero. New taunt is played when last landed physical hit was more than 3 secs ago.
+Death sound :        When dying. Different sound is played on explosion death, projectile death and physical attack death. 
+Walking sound :      Footstep sounds depending on surface stepped on.
+
+
+Shadows and Lights
+------------------
+
+Object 'key light' position is weighted from CASTSHADOW name tagged lights
+in the same cell. Lights are weighted based on their inverse squared
+distance and their (lit) effect on the object position.
+All lights are treated as point lights, actual type is ignored.
+
+
+Rendering Passes
+----------------
+
+1. Opaque level geometry
+2. Backfacing shadow volume polygons
+3. Frontfacing shadow volume polygons
+4. Shadew filler quad (color from level:setShadowColor)
+5. Game object opaque polygons, diffuse pass
+6. Game object opaque polygons, specular pass
+7. Game object and level transparent polygons, 
+   polygons sorted optionally within each primitive 
+   (primitive = all polygons of same material in a single object)
+
+
+Background Objects / Sky Domes
+------------------------------
+
+Objects with far distance need to be separated from normal
+level rendering due to problems in Z-buffer accuracy.
+Objects with BACKGROUND tag are separated from level scene during
+scene processing. Background can be assigned to level cells
+by using level:setBackground( <background object name>, <table of cells> )
+call, for example level:setBackground( "BACKGROUND_sky_dome", {"CELL","CELL2"} )
+to assign BACKGROUND_sky_dome to CELL and CELL2.
+Cells do not need to have background object if not needed.
+
+
+Flares
+------
+
+Use level:createFlareSet( <image name>, <diameter in world space>, <fade time>, <max flare count>, <cell name> ) 
+function to create flare container. Flare container holds a single image and 
+container can only be in a single room. Flare container has function addFlare 
+which accepts game object and flare parent object name as parameters.
+See harbor_area.lua for examples.
+
+Example usage:
+local diameter = 7
+local fadeTime = 0.5
+local maxFlares = 100
+local flareSet = level:createFlareSet( "myflare.dds", diameter, fadeTime, maxFlares, "CELL" )
+flareSet:addFlare( this:getCell("CELL"), "Dummy_storage_flare39" )
+flareSet:addFlare( this:getCell("CELL"), "Dummy_storage_flare40" )
+
+
+Known Issues
+------------
+
+- Character gets stuck to dynamic objects in some cases
+
+- Flares are visible through intro cut scene van
+  (van has no collision mesh so flare rays don't collide it)
+
+- If a cut scene has a morph animation for a character then
+  all subsequent parts in the same cut scene must have
+  morph animation defined for the same character or 
+  otherwise last rendered morph remains active for 
+  the rest of the cut scene
+
+- Shotgun reload does not start from correct position if interrupted
+  (requires shotgun reload to be divided to three parts)
+
+- No visualization or debug info about close combat settings
+
+- Shells don't collide dynamic objects
+
+- Empty shells stick to walls
+
+
+Changes
+-------
+
+New in Build 65 (2003/5/12):
++ Memory usage optimization (BSP 33MB, textures 50MB, shaders 5MB)
++ Dynamic object BSP instancing (objects with same name, 
+  ignoring _001 suffix, share BSP, saves memory 4-5MB)
++ Bettter BSP file format (smaller file size,
+  faster loading, no temporary memallocs needed)
+
+New in Build 64 (2003/4/24, DEMO BUILD 6):
++ Pad like peek aiming with mouse+keyboard controls
+
+New in Build 63 (2003/4/23, DEMO BUILD 5):
++ Added hitman style aiming to mouse+keyboard controls
++ Changed hero aiming and looking to use aim vector instead
+  of screen space crosshair position
++ Added safety limits for aiming distance to avoid jerking
+  when aiming at close objects
++ Improved indirect input
+  (front/back sector changes not smoothed)
++ Fixed framerate dependent mouse input
+
+New in Build 62 (2003/4/19):
++ Added indirect character control input
+  (less quakish movement as input does not change instantly,
+  see 'smoothed input' in hero.lua for settings)
++ Removed unused walk_bckw+walk_bckw_left+walk_bckw_right anims
+  from hero and thug (hero anims affected indirect input and 
+  thug anims used memory)
+
+New in Build 61 (2003/4/17, DEMO BUILD 4):
++ Added scriptable controller and controller type specific tutorial
++ Added check that selected joystick has 4 axes and 16 buttons
++ Added (and disabled...) dynamic object occlusion culling
+  (did not help warehouse performance, 54 dynamic objects)
++ Optimized NPC ground and slide plane finding
++ Optimized character visibility checks
++ Optimized shadow update
+
+New in Build 60 (2003/4/16):
++ Disabled shadow of the Jack Thug's weapon
++ Re-exported cut scene animations with smaller accepted error margin
++ Sound listener at hero world position but rotation is taken from capsule 
+  (avoids 'sound wobble' when rolling but still works in peek)
+
+New in Build 59 (2003/4/16):
++ Added keyboard run/walk toggle (capslock)
++ Updated deadjustice.txt and readme.txt
++ Updated tutorial
++ Separated PS2 and PC (mouse+keyboard) controllers
+  (PC. and PS2. prefixes in prop settings)
++ Added controller specific default camera
+  (Control.PC.ActiveCamera and Control.PS2.ActiveCamera)
++ Set camera_1 name to default camera (PC) and
+  camera_2 name to default camera (PS2)
++ Added optional controller config saving/loading
+  (Debug.LoadAndSaveControllerConfig, default is false)
++ Fixed crosshair averaging initialization
+  (caused 'jumps' on crosshair position on start)
++ Removed input device enumeration index from controller config 
+  set name to avoid incorrect config reset if index changes
++ Exported intro cut scene part 4 with 0.1% position error margin
+  (to avoid motorbike intersecting car)
++ 0.1 sec shorter physical attack strike to avoid repeat
+  behaviour effect at the end of animation
+
+New in Build 58 (2003/4/10):
++ Exported cut scene animations with sgexport 111
+  (which has camera animation last frame exporting fixed)
++ Added optional manual frame advance for debugging animation probs
++ Fixed camera animation last frame usage
++ Fixed weapon appearing one frame late in cut scenes
++ Fixed default animation pre-behaviour
++ Changed default camera animation pre/post behaviour to constant
++ Fixed (rare) bug in character/weapon removal
+  (script error if fired projectile hit after weapon removed)
+
+New in Build 57 (2003/4/9, DEMO BUILD 3):
++ Fixed legacy material usage in game
+
+New in Build 56 (2003/4/9): 
++ Fixed missing textures on ATI Radeon 9700 Pro
+  (interpolation in pixel shaders worked differently on Radeon wrt GF)
++ Replaced emissive color usage with lighting on/off toggle 
+  for signal lights to work on Radeon
++ Replaced legacy lightmap materials with shader (by code)
+  (10-15% better fps on Radeon and GF4)
++ Fixed render state reset after using shader
+  (was not visible before lightmap shader usage)
++ Driver selected refresh rate (just to be safe)
++ Screen grab disabled (just to be safe)
+
+New in Build 55 (2003/4/3, DEMO BUILD 2):
++ Disabled controller check 
+  (different platforms have different driver names)
+
+New in Build 54 (2003/4/3):
++ Added Game.ControllerWarning to toggle PS2 controller warning on/off
++ Only 4_button_16_axis_joystick accepted as joystick controller
++ Removed thugs from CELL in harbor_area_cut_scene_1.lua
++ Hide/unhide in-game characters of CELL in harbor_area_intro.lua
++ Added hiding support to characters
++ Fixed notice screen time
++ Removed slowdown FPS limit
++ Roof top enemy does not fall down (harbor_area.lua)
++ Faster character AI visibility test
++ Camera not occluded by dart board
++ Arc camera target height relative to pelvis position
++ Added message box about controller support
++ Fixed arc ball camera dolly with PS2 controller
++ Fixed first frame update problem
++ Fixed character/dynamic object/weapon removal
++ Optimizations to cut scene transform animation playback
++ Fixed bone breaking in cut scenes
++ Added triangle batching performance statistics to F7 debug dump
++ Added Debug.DisplayFPSAlways 
+  (to avoid debug usual info overhead when testing framerate)
++ Added volume collisions to peek check
++ Added dual sided collisions (when SEETHRU tag is used)
++ Fixed peeking through grid fences
++ Fixed peeking through other characters
++ Fixed peeking through dynamic objects
+
+New in Build 53 (2003/3/31, DEMO BUILD 1):
++ Fixed input reset when toggling to/from arc ball camera
+
+New in Build 52 (2003/3/31):
++ Added decrypt support to BSP file loading
++ Added Debug.Keys toggle
++ Fixed invulnerability
++ Added "Invulnerability" info text
++ Flares updated always
++ Pause disabled in cut scene
++ Disabled arc ball camera and invulnerability toggle in cut scenes
+
+New in Build 51 (2003/3/31):
++ Character update optimizations
++ High level collision optimizations
++ Added arc ball camera (F8, see prop)
++ Moon rendering hack
++ Health set to 100% in cut scene
++ Health low (<50,<10) dialogue texts
+
+New in Build 50 (2003/3/30):
++ Fixed intro cut scene playback
+
+New in Build 49 (2003/3/30):
++ Interactive tutorial
++ Pause and fly mode reset on restart
++ Only hero triggers cut scenes, level end and movement barrier
++ Added level end trigger
++ Added controller cut scene skipping (kick = PS2 cross / keyboard left ctrl)
++ Added 1/2 second delay before cut scene can be skipped (see level_util.lua)
++ Added "Skipping cut scene" text and 1 second delay to skipping
++ Added level end screen
++ Added notice screen and timeout (see prop Game.NoticeTime)
++ Changed loading/notice/end screens to DDS format
++ Removed background music playback
+
+New in Build 48 (2003/3/28):
++ Restructured help and dialog text displays
++ Added tutorial killer trigger
++ Added movement barrier trigger
++ Added "PRESS F11 ..." text to hero death (see hero.lua)
+
+New in Build 47 (2003/3/28):
++ Better flare fading, flares updated instantly when camera animation changes
+  (and changed fade time from 0.001 sec -> 0.2 sec in harbor_area.lua)
++ Optimized (3x) flare update (20-30% fps speedup on heavy flare cases)
++ Game will start slowing down if fps below <Game.SlowDownLimitFPS> (prop)
++ Fixed (harmless) warning caused by flare shader
++ controller.prop no longer loaded or saved
+  (so changes in device configurations are updated correctly)
+
+New in Build 46 (2003/3/27):
++ Added real flares with optional fade in/out
++ Added run/sneak modifier keys (capslock and left shift)
++ Active camera not saved anymore at exit
+
+New in Build 45 (2003/3/27):
++ Added wide screen support to cut scenes
+  (added also camera_base.lua back to avoid copypasting wide screen config)
++ Added adjustable cut scene camera front and back plane distances, 
+  see setCameraFrontAndBackPlaneDistances in cut scene scripts
++ Changed in-game camera front plane to 0.01m and back plane to 200m
++ Disabled device sound volume modifying
++ Fixed head jerking in weapon cycling
++ Added front and back plane distances to camera debug info
++ Fixed shotgun reload sound disappearing
++ Fixed fight sequence command addMoveAbsolute
+  (did not exit correctly)
++ Exported weapons with Renderable flag off from shadow meshes
+
+New in Build 44 (2003/3/27):
++ Weapons rendered after shadows
++ Rolling causes same noise as sneaking
++ Head turning fix applied in changing weapon state
+  (fixes head jerking in crouching while changing weapons)
++ Added delay to decoy shell throwing
++ Added decoy shell throwing angle
++ Slower decoy shell throwing (less gravity)
++ Separate background rendering (see "Background Objects / Sky Domes")
++ Renamed level sky_dome -> BACKGROUND_sky_dome
++ Added help text support
++ Morphs get always triggered at start of morph animation
++ Added morph geometry sharing/cloning
++ Fixed noise creation failing in cut scenes
+
+New in Build 43 (2003/3/25):
++ Added death morph, projectile/physical hurt morphs and idling sound morph
+  (see hero.lua and thug.lua: this.morphDying = <gm name>)
++ Changed level transparent polygon rendering pass and added doc about passes
++ Fixed key light weighting with dynamic objects
++ Added cellName parameter to animateCharacter cut scene command
++ Fixed heroine visibility in cut scene
++ Fixed bone braking in cut scenes
+
+New in Build 42 (2003/3/25):
++ Added cut scene (dialogue) texts (see cut scene scripts and onscreen.lua)
++ Added dynamic object specific weighted key light
++ Added shell throwing/decoy 
++ Fixed camera cell changing in cut scenes
++ Changed AI aim delay default 0.2, added aim delay settings to each enemy
+  (1 sec default caused AI to shoot slowly)
++ Each frame in texture animations is shown at least once
+
+New in Build 41 (2003/3/24):
++ Added AI idle sounds
+  (see harbor_area.lua: playRandomIdleSounds and thug.lua: playIdleSound)
++ AI is updated in cut scenes but cannot see/hear hero
++ Fixed camera collisions against SEETHRU materials
+
+New in Build 40 (2003/3/24):
++ Added in-game cut scene at the door
++ Added dynamic shadows
++ Added chararacter shadow toggle support to cut scenes
++ Added CASTSHADOW light name tag
+  (key light is now CASTSHADOW_Light1 until dynamic selection is implemented)
++ Fixed AI kicking
++ Fixed ricochet noises
++ Added more NPC sounds
++ Added documentation about NPC sounds and AI states
++ Disabled cut scene looping by default
++ Camera does not collide see through materials
+
+New in Build 39 (2003/3/22):
++ Material specific sneaking/walking/running noise levels and distance
++ Crouched movement causes noise equal to sneaking
++ Rolling causes noise equal to running
++ Removed periodic movement noise creators and related stuff,
+  added constant noise for each movement type as set in material
++ Added AI debug info about hearing
++ Unified vision/hearing: changed visionIntelligence to visionLimit
+  (range is now from 0=best to 1=blind)
++ Separate hero_roll_bckw animation
++ Removed weapon changing animation playback
+
+New in Build 38 (2003/3/22):
++ Added character face morpher support to cut scenes
++ Character cannot shoot behind himself (if camera is behind character)
++ Disabled weapon changing during reload and roll
++ Added support for directed particles 
+  (see player_base.lua and test shooting with m16 so that 
+  blood_splat_rifle.psf gets played)
++ Added god mode (I as invulnerability)
++ Changed cycle weapon default to PS2 ball
++ Fixed burst of sounds when ending cut scene
++ Fixed camera collisions during peek
++ Re-organized weapon and projectile files
++ Added projectile damage attenuation
+
+New in Build 37 (2003/3/20):
++ Added heroine (minimum character lua for cut scenes)
++ Sound listener now at camera position during cut scenes
++ Added texture animation exit flames
++ Changed SORT tag to modify also shader rendering order
++ Character weapon removed in level:removeCharacter
++ Reload related sounds get interrupted by rolling
++ Fixed small loops in animation playback
++ Fixed looking / rolling bug
++ AI fighting state fixes
+
+New in Build 36 (2003/3/19):
++ Added multiple character support to cut scenes
++ Added particle and sound support to cut scenes
++ Added projectile hurt animation playback (description in deadjustice.txt)
++ Added weapon selection (TAB / Ball)
++ Delayed lightmap sampling (faster and works also in cut scenes)
++ Changed camera (1) to move +-1m in peek (to match new peek anim)
++ Fixed alert state turning
++ Own bullets do not hurt character
++ Roll overrides reload (unfinished)
+
+New in Build 35 (2003/3/18):
++ Added support for parented animations in cut scenes
++ Crosshair no longer visible in cut scenes
++ Added support for generic object hiding (weapons in some cutscenes)
++ Added cut scene time to debug info
++ AI fight sequence fixes
+
+New in Build 34 (2003/3/17):
++ Added camera animation support (transformation & fov)
++ Added dynamic object animation support (transformation)
++ Added fight sequences (see Fight Sequences for command reference)
++ Added setCrossairOffset to camera 
+  (crosshair center relative to aiming rectangle center)
++ Fixed camera rotation pivot
++ Added camera tilt and FOV to debug info
++ Peeking is always followed by unpeeking
++ Unpeeking time is dependent on animation length
++ Added cut scene skipping (space)
++ Enemies outside warehouse have fight sequences
+
+New in Build 33 (2003/3/14):
++ Added aiming at dynamic objects
++ Dead characters don't make sound when shot
++ Added minimum time delay to bullet hit character sound re-play
++ More accurate bullet vs. character blood particle position
+
+New in Build 32 (2003/3/13):
++ Added face morph animation support
++ Added animation end behaviour to morph animations
++ Optimized face morpher playback: face vertices
+  are not updated if character is facing away from camera
+  or if highest character LOD level is not in use
+
+New in Build 31 (2003/3/12):
++ Added forced weapon reload (R/Triangle)
++ Sound listener position now 1m above character capsule origin (feet)
++ Sector based controller input limiting
++ Added material type tag support to dynamic objects
++ Changed camera to not collide SEETHRU materials
++ Added scriptable function parameter reference (script_ref.txt)
++ Fixed 'sounds at world origin' bug
++ Fixed linked dynamic object visibility when multiple types of DOs in level
++ Single hit sound and particle effect from shotgun bullets
++ Enemies use physical attack when near hero
++ Added physical attack strike
++ Added physical attack kick
++ Added physical attack direction depedent hurt animations
++ Attacking from behind always knocks down enemy
+
+New in Build 30 (2003/3/11):
++ Added support for dynamic geometry
++ Added support for breakable / exploding dynamic objects
++ Added dynamic object pivot and name visualization
++ Added option to remove NPCs from level (Debug.RemoveNPCs)
++ Fixed point light visualization
++ Added two test exploding barrels (002, 003), see harbor_area.lua
++ Added DEBUG_START_POINT_1 and moved player temporarily there for 
+  easier dynamic object testing
++ Added AI hearing noises to explosion and projectile recoils
+
+New in Build 29 (2003/3/7):
++ Added head turning sequences
++ Aiming starts from Dummy_flame
++ Added sneaking/walking/running step sounds to thugs
++ Added material specific sneaking/walking/running step sound playback
++ Re-organized character sound playback
++ Added thug surprised sound (placeholder)
++ New AI scripting interface (direct state stack usage)
++ Added document about computer player states (NPC_states.sxd)
++ Sounds relative to character head
++ Added exponential turning control
+
+New in Build 28 (2003/3/6):
++ Added computer player hearing sense
++ Added movement and shooting noises (note: nothing to do with sounds)
++ Added player noise level to debug info
++ Custom idle animations (see setIdleAI calls in level lua)
++ Synced movement sounds with anims
++ Added collision material types
++ Added material type specific noise factors
++ Added material noiseFactor usage to movement noise
++ Added material ricochet sounds: concrete, metal, wood
++ Added material ricochet particles: concrete, metal, wood
+
+New in Build 27 (2003/3/5):
++ Computer players don't move if they can't
++ Fixed patrol AI movement speed in tight turns
++ Crouched head turning now independent of neck bone rotation
++ Added light visualization (Debug.DrawLights)
+
+New in Build 26 (2003/3/4):
++ Patrolling characters turn to correct direction before walking
++ Physical attack remains active until animation finished
++ Physical attack button must be released before new attack
++ Roll button must be released before new roll
++ Added ground lightmap brightness to debug info
++ Added canSeeProbability AI debug info
++ Removed obsolete jumping script code
++ Cleanup up AI scripts
++ Separated enemy creation from finite state machine
++ Added separate idle finite state machine
++ Fixed AI turnTo
++ Computer players walk in circle while turning sharp angles
++ Secondary animations (head turning) affect AI vision
++ Renamed thug1/hero.sg to thug1/thug.sg
++ Added doc about NPC finite state machines
++ Added check that shotgun owner is alive when reload sounds are played
++ Added health to AI debug info
++ Changed rolling states to be dependent on animation length
++ Looking disabled in rolling
+
+New in Build 25 (2003/3/3):
++ Fixed velocity particle system screen space size
+
+New in Build 24 (2003/3/3):
++ Fixed bug in animation blender
++ Added support for velocity relative particle systems
++ Faster particle system rendering
++ Added bullet triggers
++ Better AI vision (uses bounding volume)
++ Added SpeedScale to bullet_hit_solid.psf
++ Renamed animations and sounds
++ Crouched walking no longer affect camera
+
+New in Build 23 (2003/2/28):
++ Added timer events to weapon
++ Added sequenced reload sound to shotgun
+
+New in Build 22 (2003/2/28):
++ Animation length dependent clip changing state
+
+New in Build 21 (2003/2/28):
++ Added computer player vision (see player_base for default settings)
++ Added hero_roll_left and hero_roll_right placeholder animations
++ Added support for guard paths
++ Added support for dummy object start points
++ All character positions taken from dummy objects, 
+  incl. hero (from dummy PLAYER_START_POINT)
++ Added weapon specific reload animations
++ Added box triggers (test trigger prints debug message)
+
+New in Build 20 (2003/2/27):
++ Added smooth movement directions, also crouched
++ Fixed crouched diagonal movement speeds
++ Added (non-scaled) movement control vec to character debug info
+
+New in Build 19 (2003/2/26):
++ Fixed in blend data cleanup
+
+New in Build 18 (2003/2/26):
++ Added SEETHRU material tag (see Material Tag Names)
++ Fixed particle systems appearing in wrong position
++ Fixed non-orthogonal character movement speeds
++ Normalized primary animation state debug info
+
+New in Build 17 (2003/2/24):
++ Added support for non-continuous movement speeds
++ Cleaned up movement speed configuration
++ Fixed non-constant rolling speed
++ Added weapon fire mode (AUTO/SINGLE)
++ Shoot button must be released before reload
++ Fixed exit flame particle system visibility on low framerates
++ Physical attack overrides hold
++ Disabled turning while peaking
++ Added weapon specific hit-with-butt animations
+
+New in Build 16 (2003/2/20):
++ Weapon aim/recoil
++ Camera offset blending (without springs/damping)
++ Peek camera
++ Shooting validity checked from head bone to Dummy_flame
++ Character-character collisions
++ Re-organized particles
++ Fixed multiple sound playback (character animation specific)
++ Re-organized sounds
++ Added separate sounds for separate weapons and characters
++ Removed incorrect movement speed functions
++ Added combined sneaking/walking/running speed range functions
+  which affect both animations and game object speed
+
+New in Build 15 (2003/2/20):
++ Bullet-character collisions
++ Characters aligned to world Y
++ Shader materials now support SORT name tag
++ Character can shoot inside obstacles but bullets are removed
++ Exit flame and smoke particles to all weapons
++ Added aiming hold time after shooting (5 sec, config: player_base.lua)
++ Character can shoot only when after "_aim_" animations are fully blended
++ Character gets max left/right aiming animations in green limits
++ Character gets max up/down aiming animations in red limits
++ Reset fixed (AI scripts used some globals)
+
+New in Build 14 (2003/2/19):
++ Correct weapon transformations
++ Bullets emitted from weapon Dummy_flame
++ Shells emitted from weapon Dummy_shell_exit
++ Added M16, shotgun and Beretta exit flame particle
++ Weapon ground lightmap color from owner ground lightmap color
++ Weapon visibility from owner visibility
++ Added debug output for unresolved shader parameters
++ Uniform shader parameter naming (level keylight = Light1)
++ Shader parameters updated in cells
++ Animation folder can be selected for each character
++ Characters can't shoot themselves anymore
++ Added pause (pause/break key)
++ Game.Pause, Game.FlyCamera, Game.SlowMotion settings reset at startup
++ Rolling does not modify camera offset anymore
++ Strong camera damping only in Y-direction
++ Character can't shoot through walls anymore by going very close to wall
++ Vertex normals always added to vertex format
+
+New in Build 13 (2003/2/18):
++ Spine position is taken from primary animation
++ Changing clip and physical attack prevent rolling
++ Shooting disabled while rolling
++ Crosshair variables documented (update)
++ Added 5-point lightmap sampling to character
++ All camera settings defined in camera_1.lua
+
+New in Build 12 (2003/2/17):
++ Character bone hierarchy split from Bip01 Spine
++ Added animation pre-behaviour
++ Crosshair slew method changed to use average counts
++ Head turning disabled when character is dead
++ Forward/side running sound effects
++ Fixed field of view
++ Added peeking
+
+New in Build 11 (2003/2/12):
++ Added lightmap based character and weapon shader lighting (see *.fx)
++ Added character occlusion culling
++ Added character geometry sharing support
++ Added crosshair slew rate and exponent (see Crosshair Configuration)
++ Added finite ammo and reloading
++ Added bullet wall-hit particle effect
++ Added COLLIDE and VISUAL object tags
++ Added configurable BSP-building quality
++ More readable animation blender state in debug on-screen info
++ Character and camera relative BSP visualization
++ Selectable file format in screenshot
+
+New in Build 10 (2003/2/7):
++ Fixed character flickering
++ Added support for hardware vertex shader processing
+
+New in Build 9 (2003/2/6):
++ Character animation sounds
++ Environmental sounds
++ Shooting sounds
++ Recoil error in shooting
++ Fixed camera collisions
+
+New in Build 8 (2003/2/4):
++ Removed input device checks (takes forever in Win2k)
+
+New in Build 7 (2003/2/4):
++ Recompile/reset (F11)
++ Fixed bug in input device initialization
++ Fixed crash when switching tasks in fullscreen mode
++ Added modifiable crosshair center
++ Added animation start behaviour for correct 
+  MASTER_CTRL blending when rolling backwards
++ Updated level rendering to identify cell cycles
++ Added portal debugging messages
+
+New in Build 6 (2003/1/31):
++ Fixed issues with rolling
++ Added lag to movement direction animation blending
++ Improved aiming
++ Faster collisions
++ Faster rendering, less vertex locking
+  (polygon sorting enabled only if SORT tag in material name)
+
+New in Build 5 (2003/1/30):
++ character -> static level geometry collisions
++ camera -> static level geometry collisions
++ movement direction based animation blending (unfinished)
++ roll forward, using MASTER_CTRL (unfinished)
++ head turning (unfinished)
++ aiming (unfinished)
++ fixed bug in level rendering 
+  (lost cells when camera intersected portal)
+
+New in Build 4 (2003/1/27):
++ fixed slow strafing left
++ added relative axis controller limits
++ camera limits not drawn in fly camera mode
++ eliminated camera hopping when switching cameras
++ deadzone support to input
++ targeting zones visualization (F12)
++ better PS2 controller support
++ better collision BSPs (uses 50% less memory)
++ collision BSP visualization (small levels only)
++ better BSP file format (faster to load, smaller size)
++ added screenshot key (F9)
+
+New in Build 3 (2003/1/22):
++ shader fx support incl. skinned shaders
++ level and object rendering is based on cells
++ moving from a cell to another
++ geometry preprocessing for collision checking (octree/bsp)
++ added crosshair
++ added mouse support
++ fixed DXT loading bugs
++ fixed spotlight angle bug
+
+New in Build 2 (2003/1/15):
++ Added strafing
++ Added crouched movement
++ Switched to DX9 gd driver
+
+New in Build 1 (2002/1/10):
++ Initial version
++ Basic level loading
++ Cells extracted from level scene
++ Basic character loading
++ Basic camera behind character
++ Character walking, running, turning (fixed collision plane)
++ Support for particle effects and sounds
++ DirectX 9 support

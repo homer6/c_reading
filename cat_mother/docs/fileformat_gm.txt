@@ -1,0 +1,225 @@
+Geometry (.gm) File Format 1.0
+------------------------------
+
+
+Overview
+--------
+
+Geometry file contains 3D geometry and materials.
+The file format is chunk-based. The benefit of chunks
+is that the file format can be modified without
+breaking any applications using the format. Also many
+of the data blocks are optional so using chunks makes sense, 
+for example all material render states, geometry texture 
+coordinates and vertex weights.
+
+
+Chunk Data Types
+----------------
+
+All integer types (including enumerations, flags and booleans) 
+are stored as Variable-Length-Ints. 
+
+The reason for using compressed ints is not only the file size
+but ease of programming: It is easier to *always* use the same readInt() 
+function instead of thinking separately in each chunk what is
+the integer size that should be there. See below for bitwise format description.
+
+Strings are stored UTF-8 encoded (see DataInputStream::readUTF 
+and DataOutputStream::writeUTF for details about specific format).
+Floats are stored in IEEE single precision (32-bit).
+
+
+Variable-Length-Int Data Type
+-----------------------------
+
+1.byte bit pattern:
+msxx xxxx
+0123 4567
+
+m = more bytes following = {0=false, 1=true}
+s = integer sign = {0=unsigned, 1=signed}
+x = first integer bits (0-6), unsigned
+
+n.byte bit pattern:
+mxxx xxxx
+0123 4567
+
+m = more bytes following = {0=false, 1=true}
+x = next integer bits, unsigned
+
+
+Chunk Header
+------------
+<chunk name>			// UTF-8 encoded string
+<chunk datasize>		// Variable-Length-Int
+<chunk data...>
+
+
+Animation Chunks
+----------------
+
+<number of channels=k>
+<number of keys=n>
+<interpolation={stepped=0,linear=1,Catmull-Rom=2}>
+for each key:
+	<time> <chn 1 value> .. <chn k value> <interpolation params>
+
+
+Chunk Hierarchy
+---------------
+
+Legend: {minCount,maxCount}chunkName <data and subchunks...>
+
+{1}gm
+	<ver int=0x100>
+
+	{1,n}effect : shader
+		<fx filename>
+		<material name>
+		{0,n}texture <paramName> <filename>
+		{0,n}cubetexture <paramName> <filename>
+
+	{1,n}material : shader
+		<material name>
+		{0,1}blend <src> <dst>					-- default one,zero
+		{0,1}zwrite <bool>						-- default true
+		{0,1}cull <mode>						-- default ccw
+		{0,1}lighting <bool>					-- default true
+		{0,1}diffuse <floats r g b>				-- default 1 1 1
+		{0,1}specular <floats r g b exponent>	-- default no specular
+		{0,1}emissive <floats r g b>			-- default 0 0 0
+		{0,1}opacity <float>					-- default 1
+		{0,1}nofog <bool>						-- default false
+
+		-- texlayer chunk is deprecated, use abstract layer types below
+		{0,n}texlayer
+			{0,1}filename <string>
+			{0,1}colorcombine <arg1> <op> <arg2>
+			{0,1}alphacombine <arg1> <op> <arg2>
+			{0,1}coordset <index>
+			{0,1}coordgen_env <uscale> <vscale> <uoffs> <voffs>
+			{0,1}coordgen_refl <uscale> <vscale> <uoffs> <voffs>
+			{0,1}coordgen_planar <uscale> <vscale> <uoffs> <voffs>
+
+		{0,1}tex_only
+			{0,1}type <string>					-- bitmap / cubemap
+			{0,1}filename <string>
+
+		{0,1}env_only							
+			{0,1}type <string>					-- bitmap / cubemap
+			{0,1}filename <string>
+
+		{0,1}tex_and_env
+			{0,2}type <string>					-- bitmap / cubemap
+			{0,1}texmap <string>
+			{0,1}envmap <string>
+
+		{0,1}tex_and_bump
+			{0,2}type <string>					-- bitmap / cubemap
+			{0,1}texmap <string>
+			{0,1}bumpmap <string>
+
+		{0,1}tex_and_masked_env
+			{0,2}type <string>					-- bitmap / cubemap
+			{0,1}texmap <string>	-- mask in alpha channel
+			{0,1}envmap <string>
+
+	{0,n}patchlist
+		{1}info
+			<patchCount>
+			<patchOrder>	-- only 4 for now
+		
+		{1}material
+			<index>
+
+		{1}points
+			for each patch
+				for each row i=1 to <patchOrder>
+					for each column j=1 to <patchOrder>
+						<x y z floats of control point (i,j)>
+
+	{0,n}model
+		{1}info
+			<vertexCount>
+			<triangleCount>
+			<maxWeightsPerVertex>
+			<texcoordlayerCount>
+			for each texcoordlayer
+				<texcoordsize>
+			<vertexcolorsDim>	-- 0=NONE, 3=RGB, 4=RGBA
+			<tangentSpaceUsed>	-- 0=false, 1=true (bump mapping requires tangent space)
+
+		{1}material 
+			<index to material/effect>
+
+		{1}points
+			for each vertex
+				<x y z floats>
+
+		{1}faces
+			for each face
+				<vertexIndex0> <vertexIndex1> <vertexIndex2>
+
+		{0,1}vertexnormalsf
+			for each vertex
+				<x y z floats>
+
+		{0,1}vertexcolors
+			for each vertex
+				<r g b bytes>
+
+		{0,n}texcoordlayer
+			for each vertex
+				for each texcoordlayer dimension
+					<coord float>
+
+		{0,1}skin
+			<affecting bone count>
+			for each affecting bone
+				<boneName>
+			for each vertex
+				<boneCount=w> <boneIndex[0]> <boneWeight[0]> ... <boneIndex[w-1]> <boneWeight[w-1]>
+
+	-- morph targets are stored to different .gm files than morphers,
+	-- because many morphers can use the same target
+	{0,n}morphtarget
+		{1}info
+			<channel name>
+			<type>						-- 0=geometry
+
+		{1}material 
+			<index>
+			<material name>
+
+		{1}deltas
+			<delta count>
+			<max delta length>			-- maximum distance of morph target vertex from base model
+			for each delta
+				<vertexIndex>
+				<dx dy dz floats>
+
+	{0,1}morpher
+		{1}info
+			<channel count>
+			
+		{1,n}channel
+			<name string>
+			<morph target filename>
+			<channel weight anim>
+
+	{0,n}linelist
+		<num of points int>
+		for each point
+			<x y z floats>
+
+
+Changes
+-------
+
+1.0:
+- initial version
+
+
+
+Copyright (C) Cat Mother, Ltd.

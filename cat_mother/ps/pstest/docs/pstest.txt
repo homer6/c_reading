@@ -1,0 +1,24 @@
+pstest 1.3
+----------
+
+Usage:
+
+pstest <particlesystem.psf>
+
+(finds automatically particle system files inside particles/ folder)
+
+
+Changes
+-------
+
+New in 1.3:
++ Fixed velocity particle system screen space size
+
+New in 1.2:
++ rewrote particle system rendering
++ added support for SpeedScale (see psf_commands.txt)
++ added bullet_hit_metal.psf and fusion.psf
+
+New in 1.1:
++ added psf_commands.txt
++ updated to dx9

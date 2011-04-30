@@ -1,0 +1,518 @@
+sgexport Build 113 for 3DS Max R5 and Character Studio 3
+
+
+Overview
+--------
+
+sgexport plugin exports 3DS Max scene and animations to 
+custom scene graph (sg) and geometry (gm) files.
+
+
+Install
+-------
+
+Copy sgexport.dle to 3DSMax\plugins and restart 3DS if its currently running.
+
+
+Usage
+-----
+
+From 'File' menu select 'Export...' and then set 'Save as type:' 
+to 'sgexport (*.sg)'
+
+
+Export options
+--------------
+
+Following options are available in the export dialog box:
+
+
+[Objects to export]
+
+Export geometry:
+  Enable geometry (.gm) file export
+
+Export scene:
+  Enable scene graph (.sg) file export
+
+Export morph targets:
+  Exports Morpher modifier data
+
+
+[Lighting]
+
+Static lighting only:
+  Computes vertex lighting for non-lightmapped objects.
+  If material self-illumination is set to 100% shading is disabled.
+  Only lights with VLIT are taken into account.
+
+Compress Lighting Maps:
+  Exports lightmaps in DDS format using NVDXT command line tool.
+
+
+[Miscellaneous options]
+
+Re-scale system units to meters:
+  Re-scales world to meters using current system units.
+  For example if system unit is (0.025m) then world is scaled
+  by 0.025 before exporting. DO NOT USE WITH BIPEDS.
+
+Copy textures: 
+  Copy used textures to target directory
+
+(Collapse patches:)
+  Collapses patch surfaces to triangle meshes before exporting.
+
+
+[Shadow volumes (obsolete)]
+
+(Optimize shadows:)
+  Optimize static shadows cast (see 'About Shadows' below)
+
+(Force dynamic shadows:)
+  Adds dynamic shadows to exported geometry
+
+
+[Animations]
+
+Resample animations:
+  Resample position/rotation/scale animations (less animation data)
+
+Max position resampling error:
+  Percent of bounding box length created from position keys
+
+Max rotation resampling error:
+  Maximum error in degrees.
+
+Max scale resampling error:
+  Maximum error in percent of scale.
+
+
+Materials
+---------
+
+The plugin supports 3DS Standard materials and Multi/Sub-Object materials.
+Standard material (with Blinn shader) conversion to graphics engine material:
+
+Shading:
+  - 'Blinn Basic Parameters->Diffuse' color is used as engine material
+    diffuse color IF the material has no textures
+  - Specular color, specular level and glossiness level are supported
+  - 'Blinn Basic Parameters->Self Illumination' is supported
+    (and setting self illumination to 100% disables shading)
+
+Texturemapping:
+  - Supported map channel combinations are
+    1) diffuse only
+    2) reflection only
+    3) diffuse + reflection
+    4) diffuse + glossiness + reflection
+  - Setting a 'Bitmap' texture to the channel enables texture mapping.
+    Supported bitmap types are BMP, TGA and JPG.
+  - When both diffuse channel and reflection channel has texture maps then 
+    reflection channel texture is blended by adding it to diffuse texture
+  - 'Coordinates->Texture/Environ' toggle is supported, but only
+    'Spherical Environment' and 'Shrink-wrap Environment' environment 
+    mapping types are supported from 'Coordinates->Mapping' list
+  - 'Coordinates->Offset' and 'Coordinates->Tiling' fields are supported
+  - 'Coordinates->Map Channel' selection is supported
+  - Texture filtering can be disabled by selecting 'None' from 
+    'Bitmap Parameters->Filtering'
+  - Glossy map is supported, but glossiness must be defined in alpha channel of the map and
+    glossy map must be same as diffuse channel map.
+
+Transparency:
+  - 'Blinn Basic Parameters->Opacity' level is supported as is
+  - Setting 'Extended Parameters->Advanced Transparency->Type' to 
+    'Additive' enables additive transparency
+  - Setting opacity map to the material will enable multiplicative 
+    per pixel alpha blending using bitmap file alpha channel.
+    Opacity bitmap must be the same as diffuse bitmap.
+
+Other:
+  - 'Shader Basic Parameters->2-Sided' is supported
+  - Name tag NOFOG forces fogging to be disabled for the material
+  - 'Object properties->Renderable' check box is supported
+
+Material name tags:
+SORT    enable sorting for this material
+
+
+Key-framed animations
+---------------------
+
+Position-, rotation- and scaling animations are supported for 
+meshes, lights, cameras, dummy objects and bipeds.
+
+
+Character Studio support
+------------------------
+
+NOTE: Physique export has been disabled.
+The plugin exports skin data from Physique modifier.
+Supported vertex types are rigid and rigid blended.
+
+
+Skin modifier support
+---------------------
+
+The plugin exports skin data from 3dsmax Skin modifier.
+
+
+Level of detail
+---------------
+
+LODs can be created using special object name tags:
+Create a dummy object with '_LOD' tag in its name
+and link different LOD-levels to the dummy. 
+LOD levels must have _LOD and _SIZE tags in the names.
+_SIZE tag is followed by integer representing maximum diameter of 
+the object in pixels when the LOD-level is to be used.
+Diameter of the most accurate LOD-level does not affect anything,
+it just needs to be greater than the next LOD-level diameter.
+All LOD-object names must end with serial number 
+representing copy id of the object set.
+
+Example LOD-set:
+Statue_LODs_01
+  Statue_LOD0_SIZE600_01
+  Statue_LOD1_SIZE400_01
+  Statue_LOD2_SIZE200_01
+
+In addition to the name tags, the export also supports 
+level of detail plugin included in 3DS Max.
+NOTE: 3DS Max LOD plugin support has been disabled.
+
+
+Static (vertex) lighting
+------------------------
+
+If the scene contains only static lights then scene rendering 
+can be speed up by prelighting static objects using 
+Assign Vertex Colors utility plugin included in 3DS Max.
+Note that the whole scene does not need to be prelit, 
+you can lit only a few objects if you wish.
+
+In addition to Assign Vertex Colors plugin, exporter
+can compute vertex lighting at export-time (see
+Static lighting only option at export dialog).
+
+
+Geometry instancing
+-------------------
+
+The sgexport plugin supports geometry automatic instancing. 
+The instancing is not dependent on instances/references 
+inside the 3DS Max, but the export compares object geometry:
+If two (geometry) objects have every vertex in identical position 
+then only one copy of the geometry is exported.
+Also identical object names result instancing, independent of the geometry.
+
+
+Shadows
+-------
+
+The plugin precomputes shadows if the scene contains 
+directional light named 'keylight'. Shadows are not 
+precomputed for animated or skinned objects.
+If the object has Cast Shadows checkbox unchecked 
+(see object properties) then the object doesn't cast shadow.
+NOTE: Shadow volume support is disabled.
+
+
+Morpher
+-------
+
+The plugin supports Morpher modifier. Note that all other properties
+other than vertex positions of the morph targets must be identical,
+i.e. targets must have same materials and smoothing groups as
+original base model.
+
+
+Known Issues
+------------
+
+- Dummy objects have pivot point transforms which are not taken into account.
+  Select Dummy object Hierarcy panel -> Adjust Transform -> Reset Transform & Scale
+  to fix incorrect rotations of objects parented to the dummy.
+
+
+Changes
+-------
+
+113:
+- better error threshold limits
+
+112:
+- re-organized export parameters
+- configurable animation resampling
+
+111:
+- fixed camera animation last frame export
+- less crashes on export?
+  (object GetName() seems to invalidate evaluated 
+  world state with some skinned/morph objects???)
+
+110:
+- added VLIT tag
+
+109:
+- world scale is restored even if export is interrupted
+- linear error metric in animation resampling
+
+108:
+- generalized biped split to support bipeds Bip00, Bip01, Bip02, ...
+
+107:
+- Bitmap type check need to be successful for shader materials
+- Disabled geometry instancing
+
+106:
+- disabled legacy materials
+- added shape object export (for guard paths)
+
+105:
+- added MASTER_CTRL support to bone hierarchy split
+- added unlit (100% self-illumination) support to vertex lighting
+
+104:
+- character bone hierarchy split from Bip01 Spine
+
+103:
+- added support for static vertex lighting for non-lightmapped objects (unfinished)
+- added 'Rescale system units to meters' option
+
+102:
+- changed degenerate polygon texture coordinates to warning only
+
+101:
+- optimized degenerate polygon removal
+
+100:
+- added degenerate polygon/edge/texcoord removal and warnings
+- fixed dummy object box max size
+
+99:
+- updated dummy box corners processed as vertices
+
+98:
+- added texture coordinate layer count limiting
+
+97:
+- added real dummy object support
+
+96:
+- added support for texture channel mapping from different std mtl shaders
+- added build number to debug output
+
+95:
+- added specular level and specular color channel export
+- added error if object has no texcoords but material needs texcoords
+
+94:
+- same light map file compressed only once even if used multiple times
+
+93:
+- fixed shell/multisub material export
+- added error message if nvdxt.exe used but not found
+
+92:
+- added check for missing skin data in a mesh
+- added biped check for skinned objects
+
+91:
+- initial shader effect file support
+
+90:
+- updated to max5 sdk
+- removed Physique support
+- removed LOD controller support
+- added lightmap support
+- added DDS support
+- added texture compression support
+
+89:
+- changed back to old resampling
+- camera animations not resampled
+
+88:
+- changed to use linear interpolation in resampling
+
+87:
+- better animation resampling
+
+86:
+- abstract texture layers for run-time rendering method selection
+
+85:
+- added support for actual key frame time exporting
+- changed position key frame sampling threshold to 1%
+  (fixes slight jerks in some animations)
+
+84:
+- added support for less strict morph targets:
+  morph targets don't need to have (same) material,
+  UVs or smoothing groups as base object
+
+83:
+- added 'Export morph targets' toggle
+- added check that morpher channel has not lost the source object
+- fixed bug that caused export to crash when anim start frame was > 1
+- fixed start frame usage (exported animation waited until start frame)
+- fixed bug that crashed export if biped had material set
+- changed texture copying
+
+82:
+- changed morph target primitives not to be exported 
+  if there are no altered vertices
+
+81:
+- morpher/skin co-usage support
+- faster bone animation export (44sec->27sec)
+
+80:
+- renderable check box support
+
+79:
+- added skin modifier support
+
+78:
+- added morph target and morpher support
+- changed position and scale key frame sampling threshold to 2%
+
+77:
+- added glossy map support
+- changed diff+refl blending modes to apply lighting as last layer
+  (caused additional texture layer to be used)
+
+76:
+- flipped env V-coordinate export
+
+68:
+- added threshold to already-in-shadow optimizer
+  (helps the cube case in techthingy)
+
+60:
+- fixed receive / cast shadows flag usage in optimization
+
+57:
+- fixed shadow projection to work with zero volumes
+
+56:
+- fixed static shadow output (data check was done before projection)
+
+51:
+- changed from version to build numbers
+
+4.0:
+- fixed non-shadow-casting model usage in shadow optimization
+
+3.9:
+- fixed partial shadow volume optimization
+
+3.8:
+- added light direction to static shadow info
+- added support for Renderable check box of Object Properties
+
+3.7:
+- new shadow volumes
+- better shadow volume length optimization
+
+3.6:
+- fixed 'Collapse patches' toggle
+
+3.5:
+- added non-fogged material support (NOFOG material name tag)
+
+3.4:
+- fixed unoptimized shadow export
+
+3.3:
+- added 'Collapse patches' toggle
+
+3.2:
+- faster shadow optimizer
+- name based instancing
+
+3.1:
+- memory management changes
+
+3.0:
+- animation data format changes
+- added force dynamic shadow toggle
+- fixed export dialog bug (optimize shadows -settings not loaded)
+
+2.9:
+- added patch support
+
+2.8:
+- no more txt-file debug output
+
+2.7:
+- changed shadow optimization to use lower LOD level
+
+2.6:
+- fixed LOD shadow optimization bug
+- added name based LOD support
+
+2.5:
+- added shadow raytracing accuracy setting
+- more accurate progress indicator to preparing shadows
+
+2.4:
+- fixed LOD shadow optimization
+
+2.3:
+- added support for dynamic shadows
+
+2.2:
+- lower memory usage in shadows optimization
+- faster shadow ray tracing
+- added support for cast shadows toggle
+
+2.1:
+- changed opacity bitmap filename check
+- changed failure in texture copy to be ignored (printed to Debug.txt)
+
+2.0:
+- added automatic geometry instancing
+- added shadow exporting
+- added shadow optimizations (length, overlap)
+- added shadow optimizations toggle to export options
+
+1.9:
+- added ambient color exporting
+
+1.8:
+- fixed unnecesary error message while exporting bipeds
+  (bipeds are geometry objects but do not need to have material)
+
+1.7:
+- fixed smoothing bug
+- added check that exported geometry has material
+
+1.6
+- added hierarchical level of detail support
+- added self illumination level support
+
+1.5:
+- added export progress box and abort button
+
+1.4:
+- fixed incorrect smoothing group usage
+
+1.3:
+- added opacity map support
+
+1.2:
+- fixed texture copy overwrite bug if the directories are the same
+
+1.1:
+- added vertex color support
+
+1.0:
+- the first version
+
+
+
+Copyright (C) 2002-2003 Cat Mother, Ltd.

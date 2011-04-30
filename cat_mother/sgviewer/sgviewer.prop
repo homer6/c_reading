@@ -1,0 +1,42 @@
+# sgviewer settings
+
+# display
+Width = 800
+Height = 600
+BitsPerPixel = 0
+HWTnL = 1
+RefRasterizer = 0
+Refresh = 85
+StencilEnabled = true
+SplitPrimitivePolygons = 1000
+SplitPrimitiveSize = 50
+RenderingDriver = gd_dx9
+AutoTextureCompression = false
+
+# camera
+Front = 0
+Back = 0
+MovementSpeed1 = 2
+MovementSpeed2 = 25
+MovementSpeed3 = 75
+MovementSpeed4 = 400
+RotationSpeed1 = 90
+RotationSpeed2 = 90
+RotationSpeed3 = 180
+RotationSpeed4 = 180
+
+# detail level
+Textures16bit = false
+HalfTextureResolution = false
+MipMapFilter = linear
+MipMapLODBias = -1.5
+
+# debug
+MaxDebugLines = 10000
+Profiling = 1
+Statistics = false
+DrawNormals = false
+DrawLights = true
+DrawBones = false
+DrawSkin = false
+DrawSkinOffset = 1

@@ -1,0 +1,10 @@
+#ifndef _RESAMPLING_H
+#define _RESAMPLING_H
+
+
+/** Frames per second. */
+#define SGEXPORT_SAMPLE_RATE 30
+#define SGEXPORT_TICKS_PER_SAMPLE (TIME_TICKSPERSEC / SGEXPORT_SAMPLE_RATE)
+
+
+#endif // _RESAMPLING_H

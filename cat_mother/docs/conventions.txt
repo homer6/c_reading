@@ -1,0 +1,103 @@
+About Programming Conventions
+-----------------------------
+
+
+General
+-------
+
+- In general we should be able trust the programmer's good taste.
+
+- If there is no clear arguments for the convention then there
+  is something wrong with the convention.
+
+
+Priorities
+----------
+
+1. NO BUGS
+2. Clarity
+3. Everything else
+
+
+Conventions
+-----------
+
+- Class structure:
+  1. nested types
+  2. public variables
+  3. constructors
+  4. modifier (non-const) methods
+  5. inspectors (const) methods
+  5. class functions (static methods)
+  6. protected...
+  7. private...
+  (makes it easier to find stuff from unknown class)
+
+- Include one class at a time. Files included from the same package 
+  follow each other. (easier to see what classes are used and where, 
+  makes maintainance easier and cuts down dependencies)
+
+- Include the class header file in class implementation first
+  (to ensure that all header files compile in isolation)
+
+- Type names start with capital letters followed by small letters.
+  Each new word starts with capital letters, example MyClass.
+
+- Local variables start with small letters, followed by capital letters
+  at start of the following words, example myVariable.
+  (to avoid conflicts with class names)
+
+- Private member variables start with m_ prefix, followed by local
+  variable name convention, example m_myMemberVariable.
+  (to avoid conflicts with local and other names)
+
+- Static member variables start with sm_ prefix, with exception of constants
+  (s_ warns about possibility of need for synchronization)
+
+- Constants const static and with capital letters, words separated
+  by undercore, example MY_CONSTANT.
+  (makes maintainance and debugging easier, and makes it easier
+  to see what parts of the expressions are constants)
+
+- All the same access category member variables follow each other
+  on the consecutive lines.
+  (makes it easier to find variables from the class)
+
+- Member variables are set in ctors in the same order as 
+  they appear in class declaration
+  (easier to see missing initializations)
+
+- No str/i/f prefix or other Hungarian notation variations:
+  1. Member variables should not be used outside class and
+     inside class type prefixes are useless
+  2. str/i/f doesn't guarantee anything about the type of the variable.
+  3. Hungarian notation is a relic from time before
+     strong typing -> useless with C++ and Java.
+  4. Using the notation causes problems and logical inconsistencies
+     when maintainance is needed, see Win32 SDK etc.
+
+- Opening { and closing } brackets are always in the same column
+  (makes it easier to see flow of code), example:
+  
+  if ( something )
+  {
+      fu();
+      bar();
+  }
+
+- Methods start always with a verb, with exception of methods which
+  only return information about the object and which do not have
+  any arguments, example updateSomething() and size().
+
+- There is no preprocessor directives (with exception of include 
+  guards) in any of the public header files.
+  (maintenance)
+
+- Any public header file can be compiled without including 
+  any other header file.
+  (explicit, minimal dependencies)
+
+- All public header files must be documented properly.
+  (maintenance)
+
+- Pointer* on the left side, i.e. SomeType* x

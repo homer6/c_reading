@@ -1,0 +1,51 @@
+Portalization in Level Editing
+
+
+General
+-------
+
+Cells and portals are identified by tags used in object names.
+
+Used tags:
+CELL
+PORTAL
+
+
+Cells
+-----
+
+Cells are created by creating objects with tag CELL in their name.
+Tag is case sensitive. 
+Objects belong to the cell if they are parented to the cell object.
+Cell objects can be either dummy objects or geometry.
+
+
+Portals
+-------
+
+Portals are thin, planar-like scaled dummy objects.
+Movement from one cell to another can only 
+be done by passing through a portal between two cells. 
+Portals are identified by PORTAL tag and two cell names.
+See below for examples.
+
+Portals must never intersect or overlap each other.
+The actual portal plane is placed in the middle of
+the X-axis dimension of the dummy box so the box
+must be 'thin' in direction of local space X-axis.
+Local space X axis must point to the first cell in 
+the name tag, i.e. if portal name is PORTAL:CELL1-CELL2,
+then portal dummy local X-axis must point to CELL1 side.
+
+
+Examples
+--------
+
+Cell names:
+first CELL
+boiler room CELL
+ware room CELL
+
+Portal names:
+PORTAL:first CELL-second CELL
+PORTAL:boiler room CELL-ware room CELL

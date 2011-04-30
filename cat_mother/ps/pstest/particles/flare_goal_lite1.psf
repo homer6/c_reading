@@ -1,0 +1,32 @@
+LocalSpace 1
+EmissionRate 100
+ActivationTime 0
+EmissionTime 0.1
+SystemLifeTime 1e6
+ParticleLifeTime 1e6
+MaxParticles 1
+BoundSphere 1
+Gravity 0
+
+VelocitySphere 0 0 0 0
+	# VelocitySphere x y z r
+	# VelocityBox minx miny minz maxx maxy maxz
+
+PositionSphere 0 0 0 0
+	# PositionSphere x y z r
+	# PositionBox minx miny minz maxx maxy maxz
+
+Kill NOTHING
+	# NOTHING, RANDOM, OLDEST
+
+Image images/flare_goal_lite1.tga
+# ImageAnim <file> <rows> <columns> <total frames> <fps> <behaviour = RANDOM, LIFE, LOOP, MIRROR>
+
+Size 2 2
+	# Size min max
+
+Angle 0 0
+	# Angle <min deg> <max deg>
+
+AngleSpeed 15 15
+	# AngleSpeed <min deg/s> <max deg/s>

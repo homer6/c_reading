@@ -1,0 +1,16 @@
+LocalSpace 1
+EmissionRate 10
+EmissionTime 1
+SystemLifeTime 2
+ParticleLifeTime 1
+MaxParticles 30
+VelocitySphere 0 2 1 1.5
+PositionBox 0 0 0 0 0 0
+Gravity 6.8
+Kill RANDOM
+Image images/smokepuff.tga
+Size 0.7 1.2
+BoundSphere 1
+
+# Blend <mode>, mode={ADD,MUL}
+Blend MUL

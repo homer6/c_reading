@@ -1,0 +1,34 @@
+LocalSpace 0
+EmissionRate 5000
+EmissionTime 0.04
+SystemLifeTime 0.2
+ParticleLifeTime 0.05
+MaxParticles 20
+Gravity 9.8
+
+VelocitySphere 0 0 0 20
+	# VelocitySphere x y z r
+	# VelocityBox minx miny minz maxx maxy maxz
+
+PositionSphere 0 0 0 0
+	# PositionSphere x y z r
+	# PositionBox minx miny minz maxx maxy maxz
+
+Kill NOTHING
+	# NOTHING, RANDOM, OLDEST
+
+Image images/test_single.jpg
+	# ImageAnim <file> <rows> <columns> <total frames> <fps> <behaviour = RANDOM, LIFE, LOOP, MIRROR>
+
+Size 0.1 0.1
+	# Size min max
+
+Angle 0 0
+	# Angle <min deg> <max deg>
+
+AngleSpeed 0 0
+	# AngleSpeed <min deg/s> <max deg/s>
+
+SpeedScale 0.01
+	# Scaling relative to velocity,
+	# cannot be used with AngleSpeed or Angle commands

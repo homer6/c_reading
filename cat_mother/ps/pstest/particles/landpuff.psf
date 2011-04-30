@@ -1,0 +1,13 @@
+LocalSpace 0
+EmissionRate 300
+SystemLifeTime 1.0
+EmissionTime 0.5
+ParticleLifeTime 0.5
+MaxParticles 50
+VelocitySphere 0 3 2 2
+PositionBox -0.5 0 -0.5 0.5 0 0.5
+Gravity 9.8
+Kill NOTHING
+ImageAnim images/puffs1.tga 2 2 4 0 LIFE
+Size 0.1 0.3
+BoundSphere 2

@@ -1,0 +1,15 @@
+Multi animation blend notes
+---------------------------
+
+- Animations have different blend delays
+- Animations run at different speeds
+- MovementAnimation is capable of synchronizing playback
+- GameCharacter's current two-animation blend is obsolete
+
+Results
+-------
+
+- Create "Blender" with "AddBlend", "UpdateWeight", "FreeBlends" & "GetResult" methods.
+  * Movement Animation calls "AddBlend" & "UpdateWeight"
+  * GameCharacter calls "AddBlend" & "FreeBlends", GameCharacter::ApplyAnimations() calls "GetResult" 
+- Blender does blend delays, weight normalizing, continuous animations with varying weight & fade outs on "FreeBlends"

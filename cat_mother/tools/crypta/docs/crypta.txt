@@ -1,0 +1,21 @@
+crypta 1.0
+
+
+Encrypting
+----------
+
+First
+C:\bladeball\data> crypta -e
+
+And then from bladeball.prop:
+Decrypt.Enabled = true
+
+
+Decrypting
+----------
+
+First
+C:\bladeball\data> crypta -d
+
+And then from bladeball.prop:
+Decrypt.Enabled = false

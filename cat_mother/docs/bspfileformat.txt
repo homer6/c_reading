@@ -1,0 +1,20 @@
+BSP File Format 2
+-----------------
+
+{1}bsptree
+	<version int>
+
+	{1}vertices
+		<nvertices int>
+		<vertices float3> * count
+
+	{1,n}node
+		<plane float4>
+		<npolys int>
+		for each poly
+			<id int>
+			<nvertices int>
+			<index> * nvertices
+			<plane float4>
+		{0,1}node "POSITIVE"
+		{0,1}node "NEGATIVE"
